@@ -18,7 +18,7 @@ public class IndexController extends AbstractController {
         super(menuService);
     }
 
-    @GetMapping()
+    @GetMapping("/")
     public String indexPage(ModelMap model) {
         final Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("username", ((User) principal).getUserName());

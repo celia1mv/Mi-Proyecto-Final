@@ -6,15 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="proyecto" />
+        <module name="Mi-Proyecto-Final" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Mi-Proyecto-Final" target="17" />
       <module name="proyecto" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Mi-Proyecto-Final" options="-parameters" />
       <module name="proyecto" options="-parameters" />
     </option>
   </component>
