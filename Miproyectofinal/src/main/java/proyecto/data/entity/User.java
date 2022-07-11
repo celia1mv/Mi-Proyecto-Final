@@ -35,11 +35,6 @@ public class User implements Serializable {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-    @ManyToMany (fetch = FetchType.EAGER)
-    private Set<AddressEntity> addresses;
-
-    @ManyToMany (fetch = FetchType.EAGER)
-    private Set<DogEntity> dogs;
 
 
     // Getters and Setters
@@ -139,19 +134,4 @@ public class User implements Serializable {
         this.birthDate = birthDate;
     }
 
-    public Set<AddressEntity> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(Set<AddressEntity> addresses) {
-        this.addresses = addresses;
-    }
-
-    public Set<DogEntity> getDogs() {
-        return dogs;
-    }
-
-    public void setDogs(Set<DogEntity> dogs) {
-        this.dogs = dogs;
-    }
 }

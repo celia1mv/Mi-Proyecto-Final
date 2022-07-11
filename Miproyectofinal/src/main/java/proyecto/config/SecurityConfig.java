@@ -1,8 +1,6 @@
 package proyecto.config;
 
 
-import com.example.proyecto.service.security.CustomUserAuthenticationProvider;
-import com.example.proyecto.web.access.expression.CustomWebSecurityExpressionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +13,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import proyecto.service.security.CustomUserAuthenticationProvider;
+import proyecto.web.access.expression.CustomWebSecurityExpressionHandler;
 
 @Configuration
 @EnableWebSecurity

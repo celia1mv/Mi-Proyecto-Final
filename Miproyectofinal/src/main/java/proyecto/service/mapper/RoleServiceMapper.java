@@ -1,8 +1,8 @@
 package proyecto.service.mapper;
 
-import com.example.proyecto.data.entity.Role;
-import com.example.proyecto.dto.RoleDTO;
 import org.springframework.stereotype.Service;
+import proyecto.data.entity.Role;
+import proyecto.dto.RoleDTO;
 
 @Service
 public class RoleServiceMapper extends AbstractServiceMapper<Role, RoleDTO> {

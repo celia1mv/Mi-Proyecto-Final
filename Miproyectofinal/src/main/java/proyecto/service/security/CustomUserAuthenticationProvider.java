@@ -1,9 +1,6 @@
 package proyecto.service.security;
 
 
-import com.example.proyecto.data.entity.Role;
-import com.example.proyecto.data.entity.User;
-import com.example.proyecto.data.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -15,6 +12,9 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import proyecto.data.entity.Role;
+import proyecto.data.entity.User;
+import proyecto.data.repository.UserRepository;
 
 import java.util.Collection;
 

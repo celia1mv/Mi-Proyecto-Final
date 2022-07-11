@@ -1,9 +1,9 @@
 package proyecto.service;
 
-import com.example.proyecto.service.mapper.AbstractServiceMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import proyecto.service.mapper.AbstractServiceMapper;
 
 import java.util.List;
 import java.util.Optional;
