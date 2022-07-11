@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+	<meta name="viewport" content="width=device-width"></meta>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" media="screen" />
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+	<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
+
+	<!-- Custom styles for our template -->
+	<link th:href="@{/css/bootstrap-theme.css}" rel="stylesheet" media="screen"/>
+	<link th:href="@{/css/main.css}" rel="stylesheet" />
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<!-- Iconos -->
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+<!-- navbar navbar-inverse navbar-fixed-top headroom --- este es el de la PLANTILLA-->
+<!-- navbar navbar-expand-sm bg-light --- este es el de JM-->
+
+<!-- NavBar del Index NO LOGADO -->
+	<div class="navbar navbar-inverse navbar-fixed-top headroom"  th:fragment="navBarIndexIn">
+		<div class="container fluid">
+			<div class="navbar-header">
+				<!-- Button for smallest screens -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+				<a class="navbar-brand" href="#"><img th:src="@{/images/logo.png}" alt="DogGo"></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav pull-right">
+					<li class="active"><a th:href="@{/index}">Inicio</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown">Servicios <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a th:href="@{/daycare}">Residencias</a></li>
+							<li><a th:href="@{/dogwalker}">Paseadores</a></li>
+						</ul>
+					</li>
+					<li><a class="btn" th:href="@{/signin}">Iniciar sesión / Registrarse</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</div>
+	<!-- /.navbar -->
+
+
+
+
+
+
+
+<!-- NavBar del Index LOGADO-->
+
+<!-- /.navbar -->
+
+
+
+<!-- NavBar de Guarderías/Paseadores/Hoteles/Restaurantes  NO LOGADO-->
+
+<!-- /.navbar -->
+
+
+
+<!-- NavBar de Guarderías  LOGADO-->
+
+<!-- /.navbar -->
+
+
+
+<!-- NavBar de Perfil/Notificaciones/Masscotas/Reservas... -->
+
+<!-- /.navbar -->
+
+
+	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script th:src="@{/js/headroom.min.js}"></script>
+<script th:src="@{/js/jQuery.headroom.min.js}"></script>
+<script th:src="@{/js/template.js}"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{fragments/head :: head}"></head>
+
+<body class="home">
+
+<!-- Fixed navbar -->
+<!--nav th:replace="~{fragments/navBar :: navBarIndexIn}"> </nav-->
+<!-- /.navbar -->
+
+<!-- Header -->
+<header id="head">
+
+</header>
+<!-- /Header -->
+
+
+
+
+<!-- footer -->
+<div th:replace="~{fragments/footer :: nuestroFooter}"> </div>
+<!-- /footer -->
+
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script th:src="@{/js/headroom.min.js}"></script>
+<script th:src="@{/js/jQuery.headroom.min.js}"></script>
+<script th:src="@{/js/template.js}"></script>
+
+</body>
+</html>
