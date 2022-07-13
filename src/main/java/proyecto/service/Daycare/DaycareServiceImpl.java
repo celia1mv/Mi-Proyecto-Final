@@ -32,6 +32,19 @@ public class DaycareServiceImpl implements DaycareService{
     }
 
     @Override
+    public List<DaycareDTO> findByAddress(String address){
+        List<DaycareDTO>listDaycareDto = new ArrayList<>();
+
+        List<DaycareEntity> DaycareEntityList = repository.findByAddress(String.valueOf(address));
+
+        DaycareEntityList.forEach(Daycare -> {
+            listDaycareDto.add(mapper.convertEntityToDto(Daycare));
+        });
+
+        return listDaycareDto;
+    }
+
+    @Override
     public List<DaycareDTO> filterDaycareByPrice(String priceMax, String priceMin) {
         List<DaycareDTO>listDaycareDto = new ArrayList<>();
 

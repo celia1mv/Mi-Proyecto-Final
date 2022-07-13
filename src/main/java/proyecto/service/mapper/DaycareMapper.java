@@ -11,6 +11,7 @@ import proyecto.dto.DaycareDTO;
             DaycareDTO daycareDto = new DaycareDTO();
             daycareDto.setId(daycareEntity.getId());
             daycareDto.setName(daycareEntity.getName());
+            daycareDto.setAddress(daycareEntity.getAddress());
             daycareDto.setNight_price(daycareEntity.getNight_price());
             return daycareDto;
         }

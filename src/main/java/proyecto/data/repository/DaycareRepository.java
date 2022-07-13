@@ -12,6 +12,10 @@ public interface DaycareRepository extends CrudRepository<DaycareEntity,Long> {
 
     List<DaycareEntity> findAll();
 
-    @Query(value = "SELECT * FROM guarderia WHERE precio_noche > :priceMax AND precio_noche < :priceMin", nativeQuery = true)
+    List<DaycareEntity> findByAddress(String address);
+
+    @Query(value = "SELECT * FROM daycare WHERE night_price > :priceMax AND night_price < :priceMin", nativeQuery = true)
     List<DaycareEntity> findPriceFilter(float priceMax, float priceMin);
+
+
 }

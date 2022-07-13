@@ -22,10 +22,10 @@ public class DaycareController {
         return service.listDaycare();
     }
 
-    @GetMapping(value = "/{id}")
-    public DaycareDTO getDaycare(){
+    @GetMapping(value = "/{address}")
+    public List<DaycareDTO> listDaycareAddress(String address){
 
-        return null;
+        return service.findByAddress(address);
     }
 
     @GetMapping(value = "price/max/{priceMax}/min/{priceMin}")
