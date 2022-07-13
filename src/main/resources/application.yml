@@ -17,6 +17,7 @@ spring:
     cache:
       period: 0
   jpa:
+    show-sql: true
     hibernate:
       ddl-auto: update
     defer-datasource-initialization: true
