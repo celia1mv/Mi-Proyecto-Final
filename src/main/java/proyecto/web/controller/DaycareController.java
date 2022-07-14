@@ -22,6 +22,7 @@ public class DaycareController {
         return service.listDaycare();
     }
 
+
     @GetMapping(value = "/filter")
     public List<DaycareDTO> listDaycareAddress(@RequestParam String address){
 
