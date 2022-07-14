@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface MenuRepository extends JpaRepository<MenuEntity, Integer> {
 
-    //List<MenuEntity> findDistinctByRolesIn(Collection<RoleEntity> roleEntities);
+    List<MenuEntity> findDistinctByRoleIn(Collection<RoleEntity> roleEntities);
 }

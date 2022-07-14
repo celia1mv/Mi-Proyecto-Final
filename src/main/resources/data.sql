@@ -1,6 +1,6 @@
 INSERT INTO users (id, active, birth_date, date_initial, email, first_surname, last_surname, name, password, phone, user_name)
-VALUES (1,1,'2022-05-08','2022-05-08','admin@gmail.com','admin','admin','admin','$2a$04$5sT3dri6bOOG2b9P1LETEujUeYMR46G/OVybuBjxBAohlEtDsxmi2','956783542','admin'),
-       (2,1,'2022-05-08','2022-05-08','emingora@gmail.com','emingora','emingora','emingora','$2a$04$5sT3dri6bOOG2b9P1LETEujUeYMR46G/OVybuBjxBAohlEtDsxmi2','956783541','emingora'),
+VALUES (1,1,'2022-05-08','2022-05-08','admin@gmail.com','admin','admin','admin','$2a$04$UWl44lyROes50n/qHGQKbu.3JwDMXkZZSaL1Tz5V7IF4EORU6p2fG','956783542','admin'),
+       (2,1,'2022-05-08','2022-05-08','emingora@gmail.com','emingora','emingora','emingora','$2a$04$UWl44lyROes50n/qHGQKbu.3JwDMXkZZSaL1Tz5V7IF4EORU6p2fG','956783541','emingora'),
        (3,0,'2022-05-08','2022-05-08','emingora@gmail.com','nonactiveuser','nonactiveuser','nonactiveuser','$2a$04$5sT3dri6bOOG2b9P1LETEujUeYMR46G/OVybuBjxBAohlEtDsxmi2','956783540','nonactiveuser'),
        (4,1,'2022-05-08','2022-05-08','pepe@gmail.com','Garcia','Rodriguez','Pepe','$2a$04$5sT3dri6bOOG2b9P1LETEujUeYMR46G/OVybuBjxBAohlEtDsxmi2','956783542','pepe'),
        (5,1,'2022-05-08','2022-05-08','daniel@gmail.com','Perez','Callejo','Daniel','$2a$04$5sT3dri6bOOG2b9P1LETEujUeYMR46G/OVybuBjxBAohlEtDsxmi2','956783541','daniel'),

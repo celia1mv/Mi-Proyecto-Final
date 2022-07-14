@@ -39,7 +39,7 @@ public class CustomUserAuthenticationProvider implements AuthenticationProvider 
         if (user == null) {
             throw new UsernameNotFoundException("Invalid username/password");
         }
-
+        passwordEncoder.encode(user.getPassword());
         if (!passwordEncoder.matches(token.getCredentials().toString(), user.getPassword())) {
             throw new BadCredentialsException("Invalid username/password");
         }

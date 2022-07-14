@@ -35,8 +35,7 @@ public class MenuService extends AbstractBusinessService<MenuEntity, Integer, Me
     }
 
     public List<MenuDTO> getMenuForRole(Collection<RoleEntity> roleEntities) {
-        return null;
-        //List<MenuEntity> menuEntities = this.getRepository().findDistinctByRolesIn(roleEntities);
-        //return this.getServiceMapper().toDto(menuEntities);
+        List<MenuEntity> menuEntities = this.getRepository().findDistinctByRoleIn(roleEntities);
+        return this.getServiceMapper().toDto(menuEntities);
     }
 }
