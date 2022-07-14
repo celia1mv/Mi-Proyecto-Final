@@ -4,7 +4,7 @@ package proyecto.web.controller;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import proyecto.data.entity.User;
+import proyecto.data.entity.UserEntity;
 import proyecto.dto.MenuDTO;
 import proyecto.service.MenuService;
 
@@ -24,7 +24,7 @@ public abstract class AbstractController<DTO> {
 
     @ModelAttribute("menuList")
     public List<MenuDTO> menu() {
-        final Integer userId = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
+        final Integer userId = ((UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
         return this.menuService.getMenuForUserId(userId);
     }
 

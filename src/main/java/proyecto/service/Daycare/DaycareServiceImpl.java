@@ -35,7 +35,7 @@ public class DaycareServiceImpl implements DaycareService{
     public List<DaycareDTO> findByAddress(String address){
         List<DaycareDTO>listDaycareDto = new ArrayList<>();
 
-        List<DaycareEntity> DaycareEntityList = repository.findByAddress(String.valueOf(address));
+        List<DaycareEntity> DaycareEntityList = repository.findByAddressContaining(String.valueOf(address));
 
         DaycareEntityList.forEach(Daycare -> {
             listDaycareDto.add(mapper.convertEntityToDto(Daycare));

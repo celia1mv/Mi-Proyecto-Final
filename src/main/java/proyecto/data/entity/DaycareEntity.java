@@ -11,8 +11,8 @@ import java.io.Serializable;
         private Integer id;
         @Column(nullable = false, length = 45)
         private String name;
-        @Column(nullable = false)
-        private float night_price;
+        @Column(name = "night_price", nullable = false)
+        private float nightPrice;
         @Column(nullable = false, length = 15)
         private String phone;
         @Column(nullable = false, length = 150)
@@ -20,7 +20,7 @@ import java.io.Serializable;
         @Column(nullable = false, length = 150)
         private String address;
         @Column(nullable = false)
-        private float assessment;
+        private float ranking;
 
         // Constructor
         public DaycareEntity() {
@@ -29,11 +29,11 @@ import java.io.Serializable;
         public DaycareEntity(Integer id, String name, float night_price, String phone, String email, String address, float assessment) {
             this.id = id;
             this.name = name;
-            this.night_price = night_price;
+            this.nightPrice = night_price;
             this.phone = phone;
             this.email = email;
             this.address = address;
-            this.assessment = assessment;
+            this.ranking = assessment;
         }
 
         public Integer getId() {
@@ -50,14 +50,6 @@ import java.io.Serializable;
 
         public void setName(String name) {
             this.name = name;
-        }
-
-        public float getNight_price() {
-            return night_price;
-        }
-
-        public void setNight_price(float night_price) {
-            this.night_price = night_price;
         }
 
         public String getPhone() {
@@ -84,11 +76,19 @@ import java.io.Serializable;
             this.address = address;
         }
 
-        public float getAssessment() {
-            return assessment;
+        public float getNightPrice() {
+            return nightPrice;
         }
 
-        public void setAssessment(float assessment) {
-            this.assessment = assessment;
+        public void setNightPrice(float nightPrice) {
+            this.nightPrice = nightPrice;
+        }
+
+        public float getRanking() {
+            return ranking;
+        }
+
+        public void setRanking(float ranking) {
+            this.ranking = ranking;
         }
     }

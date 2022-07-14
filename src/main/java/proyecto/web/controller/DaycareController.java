@@ -22,8 +22,8 @@ public class DaycareController {
         return service.listDaycare();
     }
 
-    @GetMapping(value = "/{address}")
-    public List<DaycareDTO> listDaycareAddress(String address){
+    @GetMapping(value = "/filter")
+    public List<DaycareDTO> listDaycareAddress(@RequestParam String address){
 
         return service.findByAddress(address);
     }

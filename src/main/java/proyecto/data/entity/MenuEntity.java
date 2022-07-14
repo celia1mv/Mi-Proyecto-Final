@@ -4,14 +4,13 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Menu {
+@Table(name = "MENU")
+public class MenuEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(nullable = false)
     private String description;
-    @ManyToOne
-    private Menu parent;
     @Column(name = "APP_ORDER")
     private Integer order;
     private Integer active;
@@ -19,12 +18,17 @@ public class Menu {
 
     // Relations
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Role> roles;
+    @ManyToMany()
+    @JoinTable(
+        name = "menu_role",
+        joinColumns = @JoinColumn(name = "menu_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id"))
+    Set<RoleEntity> role;
+
 
     // Constructor
 
-    public Menu() {
+    public MenuEntity() {
     }
 
     // Getters and Setters
@@ -43,14 +47,6 @@ public class Menu {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Menu getParent() {
-        return parent;
-    }
-
-    public void setParent(Menu parent) {
-        this.parent = parent;
     }
 
     public Integer getOrder() {
@@ -77,12 +73,11 @@ public class Menu {
         this.url = url;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Set<RoleEntity> getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Set<RoleEntity> role) {
+        this.role = role;
     }
-
 }

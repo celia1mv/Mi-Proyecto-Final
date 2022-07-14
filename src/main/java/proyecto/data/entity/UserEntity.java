@@ -6,36 +6,44 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-public class User implements Serializable {
+@Table(name = "USERS")
+public class UserEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(nullable = false)
+    @Column(name = "user_name", nullable = false)
     private String userName;
     @Column(nullable = false)
     private String password;
     @Temporal(TemporalType.DATE)
+    @Column(name = "date_initial")
     private Date date;
     @Basic(optional = false)
     private boolean active;
     @Column(nullable = true, length = 45)
     private String name;
-    @Column(nullable = true, length = 45)
+    @Column(name = "first_surname", nullable = true, length = 45)
     private String firstSurname;
-    @Column(length = 45)
+    @Column(name = "last_surname", length = 45)
     private String lastSurname;
     @Column(nullable = true, length = 150)
     private String email;
     @Column(nullable = true, length = 15)
     private String phone;
-    @Column(nullable = true)
+    @Column(name = "birth_date", nullable = true)
     private Date birthDate;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Role> roles;
+    @ManyToMany()
+    @JoinTable(
+        name = "user_role",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id"))
+    Set<RoleEntity> role;
 
-
+    @ManyToOne()
+    @JoinColumn(name="dog_id")
+    private DogEntity dog;
 
     // Getters and Setters
     public Integer getId() {
@@ -76,14 +84,6 @@ public class User implements Serializable {
 
     public void setActive(boolean active) {
         this.active = active;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
     }
 
     public String getName() {
@@ -134,4 +134,19 @@ public class User implements Serializable {
         this.birthDate = birthDate;
     }
 
+    public Set<RoleEntity> getRole() {
+        return role;
+    }
+
+    public void setRole(Set<RoleEntity> role) {
+        this.role = role;
+    }
+
+    public DogEntity getDog() {
+        return dog;
+    }
+
+    public void setDog(DogEntity dog) {
+        this.dog = dog;
+    }
 }

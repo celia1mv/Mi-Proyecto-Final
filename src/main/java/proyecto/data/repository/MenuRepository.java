@@ -2,13 +2,13 @@ package proyecto.data.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import proyecto.data.entity.Menu;
-import proyecto.data.entity.Role;
+import proyecto.data.entity.MenuEntity;
+import proyecto.data.entity.RoleEntity;
 
 import java.util.Collection;
 import java.util.List;
 
-public interface MenuRepository extends JpaRepository<Menu, Integer> {
+public interface MenuRepository extends JpaRepository<MenuEntity, Integer> {
 
-    List<Menu> findDistinctByRolesIn(Collection<Role> roles);
+    //List<MenuEntity> findDistinctByRolesIn(Collection<RoleEntity> roleEntities);
 }

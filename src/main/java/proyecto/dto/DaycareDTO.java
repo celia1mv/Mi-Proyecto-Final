@@ -9,7 +9,7 @@ public class DaycareDTO {
     private String phone;
     private String email;
     private String address;
-    private float assessment;
+    private float ranking;
 
     public String getName() {
         return name;
@@ -67,11 +67,11 @@ public class DaycareDTO {
         this.address = address;
     }
 
-    public float getAssessment() {
-        return assessment;
+    public float getRanking() {
+        return ranking;
     }
 
-    public void setAssessment(float assessment) {
-        this.assessment = assessment;
+    public void setRanking(float assessment) {
+        this.ranking = assessment;
     }
 }

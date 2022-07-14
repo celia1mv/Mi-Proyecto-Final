@@ -2,9 +2,9 @@ package proyecto.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import proyecto.data.entity.Menu;
-import proyecto.data.entity.Role;
-import proyecto.data.entity.User;
+import proyecto.data.entity.MenuEntity;
+import proyecto.data.entity.RoleEntity;
+import proyecto.data.entity.UserEntity;
 import proyecto.data.repository.MenuRepository;
 import proyecto.data.repository.RoleRepository;
 import proyecto.data.repository.UserRepository;
@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-public class MenuService extends AbstractBusinessService<Menu, Integer, MenuDTO, MenuRepository, MenuServiceMapper> {
+public class MenuService extends AbstractBusinessService<MenuEntity, Integer, MenuDTO, MenuRepository, MenuServiceMapper> {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -29,13 +29,14 @@ public class MenuService extends AbstractBusinessService<Menu, Integer, MenuDTO,
     }
 
     public List<MenuDTO> getMenuForUserId(Integer userId) {
-        User user = this.userRepository.findById(userId)
+        UserEntity user = this.userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException(String.format("The user ID %s does not exist", userId)));
-        return getMenuForRole(user.getRoles());
+        return getMenuForRole(user.getRole());
     }
 
-    public List<MenuDTO> getMenuForRole(Collection<Role> roles) {
-        List<Menu> menus = this.getRepository().findDistinctByRolesIn(roles);
-        return this.getServiceMapper().toDto(menus);
+    public List<MenuDTO> getMenuForRole(Collection<RoleEntity> roleEntities) {
+        return null;
+        //List<MenuEntity> menuEntities = this.getRepository().findDistinctByRolesIn(roleEntities);
+        //return this.getServiceMapper().toDto(menuEntities);
     }
 }
