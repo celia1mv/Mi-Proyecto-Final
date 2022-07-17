@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "DOG")
-public class DogsEntity implements Serializable {
+public class DogEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,10 +27,10 @@ public class DogsEntity implements Serializable {
     @OneToMany (mappedBy = "dog")
     private Set<UserEntity> user;
 
-    public DogsEntity() {
+    public DogEntity() {
     }
 
-    public DogsEntity(Long id, Integer age, String allergies, Integer compatible, String gender, String informationAdditional, Integer microchip, String name, String race, String sterilized, Integer weight) {
+    public DogEntity(Long id, Integer age, String allergies, Integer compatible, String gender, String informationAdditional, Integer microchip, String name, String race, String sterilized, Integer weight) {
         this.id = id;
         this.age = age;
         this.allergies = allergies;
