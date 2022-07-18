@@ -39,7 +39,7 @@ public class UserEntity implements Serializable {
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id"))
     Set<RoleEntity> role;
-
+//Crear objeto list add etc
     @ManyToOne()
     @JoinColumn(name="dog_id")
     private DogEntity dog;
