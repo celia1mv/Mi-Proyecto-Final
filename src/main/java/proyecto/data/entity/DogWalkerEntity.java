@@ -37,7 +37,6 @@ public class DogWalkerEntity implements Serializable {
     private String gallery;
 
     //Relations
-    //Un usuario puede contratar a un paseador, y un paseador puede ser contratado por varios
     @ManyToMany (fetch = FetchType.EAGER)
     private Set<UserEntity> user;
 
