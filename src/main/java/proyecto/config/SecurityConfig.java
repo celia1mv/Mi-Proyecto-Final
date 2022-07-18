@@ -70,7 +70,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/*").hasAnyRole("ROLE_ADMIN") // Esto significa que a /admin no puedes acceder si no tienes el role ADMIN
                 .antMatchers("/login/*").permitAll()
                 .antMatchers("/logout").permitAll()
-                .antMatchers("/*", "/api/*").authenticated()
+                .antMatchers("/api/*").authenticated()
+                .antMatchers("/index").permitAll()
+             //   .antMatchers("/wellcome").permitAll()
+             //   .antMatchers("/landing").permitAll()
         ;
     }
 

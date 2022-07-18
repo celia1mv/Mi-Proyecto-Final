@@ -20,8 +20,8 @@ public class IndexController extends AbstractController {
 
     @GetMapping("/")
     public String indexPage(ModelMap model) {
-        final Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("username", ((UserEntity) principal).getUserName());
+        //final Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+       // model.addAttribute("username", ((UserEntity) principal).getUserName());
         return "index";
     }
 }

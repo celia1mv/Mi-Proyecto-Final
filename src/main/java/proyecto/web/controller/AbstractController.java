@@ -22,11 +22,21 @@ public abstract class AbstractController<DTO> {
         this.menuService = menuService;
     }
 
+
     @ModelAttribute("menuList")
     public List<MenuDTO> menu() {
-        final Integer userId = ((UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
+        Integer userId = -1;
+        System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
+        //Comprobamos si hay usuario logeado
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")){
+            userId = 99999;
+        }
+        else {
+            userId = ((UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
+        }
         return this.menuService.getMenuForUserId(userId);
     }
+
 
     protected List<Integer> getPageNumbers(Page<DTO> pages) {
         return pages.getTotalPages() > 0 ?

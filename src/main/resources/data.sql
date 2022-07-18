@@ -7,13 +7,16 @@ VALUES (1,1,'2022-05-08','2022-05-08','admin@gmail.com','admin','admin','$2a$04$
        (6,1,'2022-05-08','2022-05-08','antonio@gmail.com','Peralta Castillo','Antonio','$2a$04$5sT3dri6bOOG2b9P1LETEujUeYMR46G/OVybuBjxBAohlEtDsxmi2','956783540','antonio'),
        (7,1,'2022-05-08','2022-05-08','laura@gmail.com','Martinez Ruiz','Laura','$2a$04$5sT3dri6bOOG2b9P1LETEujUeYMR46G/OVybuBjxBAohlEtDsxmi2','956783540','laura'),
        (8,1,'2022-05-08','2022-05-08','enrique@gmail.com','Lopez Gomez','Enrique','$2a$04$5sT3dri6bOOG2b9P1LETEujUeYMR46G/OVybuBjxBAohlEtDsxmi2','956783540','enrique');
+INSERT INTO users (id, user_name, password, date_initial, active)
+VALUES (99999,'default','$2a$04$5sT3dri6bOOG2b9P1LETEujUeYMR46G/OVybuBjxBAohlEtDsxmi2','2022-05-08',1);
 
 INSERT INTO role (id, role_name)
 VALUES
 	  (1,'ROLE_ADMIN'),
 	  (2,'ROLE_USER'),
 	  (3,'ROLE_DOGWALKER'),
-      (4,'ROLE_DAYCARE');
+      (4,'ROLE_DAYCARE'),
+      (5,'ROLE_ANONYMOUS');
 
 INSERT INTO user_role (user_id, role_id)
 VALUES
@@ -35,7 +38,8 @@ VALUES
     (6,4),
     (7,2),
     (7,4),
-
+--ROLE ANONYMOUS
+    (99999,5);
 
 -- Menu
 INSERT INTO menu (id, description, app_order, active, url)
@@ -45,6 +49,7 @@ VALUES
     (3,'Admin',10, 1, '/admin'),
     (4,'Daycare',20, 1, '/Daycare'),
     (5,'DogWalker',30, 1, '/Dogwalker'),
+    (9,'Login',1000, 1, '/login');
 
 INSERT INTO menu_role(menu_id, role_id)
 VALUES
@@ -67,6 +72,11 @@ VALUES
 --DOGWALKER -> ADMIN Y USER
     (5,1),
     (5,2),
+--ANONYMOUS
+    (1,5),
+    (9,5);
+
+
 
 INSERT INTO dog (id, age, allergies, compatible, gender, inf_additional, microchip, name, race, sterilized, weight_kg)
 VALUES
