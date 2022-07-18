@@ -11,8 +11,10 @@ import java.io.Serializable;
         private Integer id;
         @Column(nullable = false, length = 45)
         private String name;
-        @Column(name = "night_price", nullable = false)
+
+        @Column (name = "night_price", nullable = false)
         private float nightPrice;
+
         @Column(nullable = false, length = 15)
         private String phone;
         @Column(nullable = false, length = 150)
@@ -21,6 +23,8 @@ import java.io.Serializable;
         private String address;
         @Column(nullable = false)
         private float ranking;
+        // Relations
+
 
         // Constructor
         public DaycareEntity() {

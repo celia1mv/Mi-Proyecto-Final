@@ -23,10 +23,8 @@ public class UserEntity implements Serializable {
     private boolean active;
     @Column(nullable = true, length = 45)
     private String name;
-    @Column(name = "first_surname", nullable = true, length = 45)
-    private String firstSurname;
-    @Column(name = "last_surname", length = 45)
-    private String lastSurname;
+    @Column(name = "surname", nullable = true, length = 45)
+    private String Surname;
     @Column(nullable = true, length = 150)
     private String email;
     @Column(nullable = true, length = 15)
@@ -34,6 +32,7 @@ public class UserEntity implements Serializable {
     @Column(name = "birth_date", nullable = true)
     private Date birthDate;
 
+    //Relations
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "user_role",
@@ -44,6 +43,10 @@ public class UserEntity implements Serializable {
     @ManyToOne()
     @JoinColumn(name="dog_id")
     private DogEntity dog;
+
+    @OneToOne()
+    @JoinColumn(name="dogWalker_id")
+    private DogWalkerEntity dogWalker;
 
     // Getters and Setters
     public Integer getId() {
@@ -94,20 +97,12 @@ public class UserEntity implements Serializable {
         this.name = name;
     }
 
-    public String getFirstSurname() {
-        return firstSurname;
+    public String getSurname() {
+        return Surname;
     }
 
-    public void setFirstSurname(String firstSurname) {
-        this.firstSurname = firstSurname;
-    }
-
-    public String getLastSurname() {
-        return lastSurname;
-    }
-
-    public void setLastSurname(String lastSurname) {
-        this.lastSurname = lastSurname;
+    public void setSurname(String surname) {
+        Surname = surname;
     }
 
     public String getEmail() {
