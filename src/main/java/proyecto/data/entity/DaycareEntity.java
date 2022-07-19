@@ -25,6 +25,8 @@ import java.io.Serializable;
         private float ranking;
         // Relations
 
+        //Onetomany con catalogo
+
 
         // Constructor
         public DaycareEntity() {

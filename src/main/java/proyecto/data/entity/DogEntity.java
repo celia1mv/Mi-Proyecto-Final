@@ -9,7 +9,7 @@ import java.util.Set;
 public class DogEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private Integer age;
     private String allergies;
     private Integer compatible;
@@ -24,13 +24,15 @@ public class DogEntity implements Serializable {
     @Column(name= "weight_kg")
     private Integer weight;
 
+    //Relations
     @OneToMany (mappedBy = "dog")
     private Set<UserEntity> user;
 
+    //Builder
     public DogEntity() {
     }
 
-    public DogEntity(Long id, Integer age, String allergies, Integer compatible, String gender, String informationAdditional, Integer microchip, String name, String race, String sterilized, Integer weight) {
+    public DogEntity(Integer id, Integer age, String allergies, Integer compatible, String gender, String informationAdditional, Integer microchip, String name, String race, String sterilized, Integer weight) {
         this.id = id;
         this.age = age;
         this.allergies = allergies;
@@ -43,12 +45,12 @@ public class DogEntity implements Serializable {
         this.sterilized = sterilized;
         this.weight = weight;
     }
-
-    public Long getId() {
+    //Getter y Setter
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -35,19 +35,24 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Daycare Name</th>
+                                    <th>Nombre</th>
+                                    <th>Precio/Noche</th>
+                                    <th>Teléfono</th>
+                                    <th>Email</th>
+                                    <th>Dirección</th>
+                                    <th>Valoración</th>
                                     <th>&nbsp;</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr th:each="item,iter : ${daycare}">
                                     <td th:text="${item.id}"></td>
-                                    <td th:text="${item.daycareName}"></td>
-                                    <td th:text="${item.daycareNight_price}"></td>
-                                    <td th:text="${item.daycarePhone}"></td>
-                                    <td th:text="${item.daycareEmail}"></td>
-                                    <td th:text="${item.daycareAddress}"></td>
-                                    <td th:text="${item.daycareAssessment}"></td>
+                                    <td th:text="${item.name}"></td>
+                                    <td th:text="${item.nightPrice}"></td>
+                                    <td th:text="${item.phone}"></td>
+                                    <td th:text="${item.email}"></td>
+                                    <td th:text="${item.address}"></td>
+                                    <td th:text="${item.ranking}"></td>
                                     <td>
                                         <a href="#" class="btn btn-default" th:href="@{'/daycare/' + ${item.id}}"
                                            title="View"><span class="glyphicon glyphicon glyphicon-eye-open"></span></a>

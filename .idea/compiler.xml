@@ -11,7 +11,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Mi-Proyecto-Final" target="17" />
-      <module name="proyecto" target="17" />
+      <module name="proyecto" target="18" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
