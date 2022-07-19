@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "servicesUser")
@@ -27,7 +28,8 @@ public class ServicesUserEntity implements Serializable {
     private Date bookingLastDate;
 
     // Relations
-
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "services")
+    private Set<UserEntity> user;
     // Constructores
 
     public ServicesUserEntity() {

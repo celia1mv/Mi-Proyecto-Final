@@ -1,9 +1,12 @@
 package proyecto.data.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Set;
 
 @Entity
-public class AddressEntity {
+@Table(name = "address")
+public class AddressEntity implements Serializable {
     // Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +24,10 @@ public class AddressEntity {
     private String address;
 
     //Relations
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "addresses")
+    private Set<UserEntity> user;
+
 
     //Constructor
 

@@ -3,6 +3,7 @@ package proyecto.data.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -39,20 +40,31 @@ public class UserEntity implements Serializable {
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id"))
     Set<RoleEntity> role;
-    @ManyToOne()
-    @JoinColumn(name="dog_id")
-    private DogEntity dog;
 
-    @ManyToOne()
-    @JoinColumn(name="invoice_id")
-    private InvoiceEntity invoice;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "address",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "address_id"))
+    Set<AddressEntity> addresses;
 
-    @ManyToOne()
-    @JoinColumn(name="payment_Method")
-    private PaymentMethodEntity paymentMethod;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "servicesUser",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "sevices_id"))
+    Set<AddressEntity> services;
 
-    @ManyToMany (fetch = FetchType.EAGER)
-    private Set<AddressEntity> addresses;
+    @OneToMany (mappedBy = "user")
+    private Set<DogEntity> dogs;
+
+    @OneToMany (mappedBy = "user")
+    private Set<InvoiceEntity> invoice;
+
+    @OneToMany (mappedBy = "user")
+    private Set<PaymentMethodEntity> paymentMethodes;
+
+//HACER CATALOGO
 
 
     //(?)
@@ -153,11 +165,6 @@ public class UserEntity implements Serializable {
         this.role = role;
     }
 
-    public DogEntity getDog() {
-        return dog;
-    }
 
-    public void setDog(DogEntity dog) {
-        this.dog = dog;
-    }
+
 }

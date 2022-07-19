@@ -1,5 +1,7 @@
 package proyecto.data.entity;
 
+import org.apache.catalina.User;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,6 +13,9 @@ public class PaymentMethodEntity {
     private String description;
 
     //Relaciones
+    @ManyToOne()
+    @JoinColumn(name="user_id")
+    private UserEntity user;
 
     //Constructores
 

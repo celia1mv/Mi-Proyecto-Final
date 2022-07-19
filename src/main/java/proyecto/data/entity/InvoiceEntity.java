@@ -21,6 +21,9 @@ public class InvoiceEntity {
     private String status;
 
     // Relations
+    @ManyToOne()
+    @JoinColumn(name="user_id")
+    private UserEntity user;
 
     //Constructor
 

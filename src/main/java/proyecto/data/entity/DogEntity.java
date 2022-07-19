@@ -25,8 +25,12 @@ public class DogEntity implements Serializable {
     private Integer weight;
 
     //Relations
-    @OneToMany (mappedBy = "dog")
-    private Set<UserEntity> user;
+
+    @ManyToOne()
+    @JoinColumn(name="user_id")
+    private UserEntity user;
+
+
 
     //Builder
     public DogEntity() {
@@ -134,11 +138,6 @@ public class DogEntity implements Serializable {
         this.weight = weight;
     }
 
-    public Set<UserEntity> getUser() {
-        return user;
-    }
 
-    public void setUser(Set<UserEntity> user) {
-        this.user = user;
-    }
+
 }
