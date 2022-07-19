@@ -43,7 +43,24 @@ public class UserEntity implements Serializable {
     @JoinColumn(name="dog_id")
     private DogEntity dog;
 
-    @OneToOne()
+    @ManyToOne()
+    @JoinColumn(name="invoice_id")
+    private InvoiceEntity invoice;
+
+    @ManyToOne()
+    @JoinColumn(name="payment_Method")
+    private PaymentMethodEntity paymentMethod;
+
+    @ManyToMany (fetch = FetchType.EAGER)
+    private Set<AddressEntity> addresses;
+
+
+    //(?)
+    @OneToMany()
+    @JoinColumn(name="daycare_id")
+    private DaycareEntity daycare;
+
+    @OneToMany()
     @JoinColumn(name="dogWalker_id")
     private DogWalkerEntity dogWalker;
 
