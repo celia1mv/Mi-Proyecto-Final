@@ -1,31 +1,20 @@
 package proyecto.dto;
 
 
+import java.util.Set;
+
 public class DaycareDTO {
-    private String name;
-    private String reservation;
     private Integer id;
-    private float night_price;
+    private String name;
+    private float nightPrice;
     private String phone;
     private String email;
     private String address;
+    private String reservation;
     private float ranking;
 
-    public String getName() {
-        return name;
-    }
+    private Set<AddressDTO> addresses;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getReservation() {
-        return reservation;
-    }
-
-    public void setReservation(String reservation) {
-        this.reservation = reservation;
-    }
 
     public Integer getId() {
         return id;
@@ -35,12 +24,20 @@ public class DaycareDTO {
         this.id = id;
     }
 
-    public float getNight_price() {
-        return night_price;
+    public String getName() {
+        return name;
     }
 
-    public void setNight_price(float night_price) {
-        this.night_price = night_price;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public float getNightPrice() {
+        return nightPrice;
+    }
+
+    public void setNightPrice(float nightPrice) {
+        this.nightPrice = nightPrice;
     }
 
     public String getPhone() {
@@ -67,11 +64,19 @@ public class DaycareDTO {
         this.address = address;
     }
 
+    public String getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(String reservation) {
+        this.reservation = reservation;
+    }
+
     public float getRanking() {
         return ranking;
     }
 
-    public void setRanking(float assessment) {
-        this.ranking = assessment;
+    public void setRanking(float ranking) {
+        this.ranking = ranking;
     }
 }

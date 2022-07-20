@@ -94,9 +94,10 @@ VALUES
   ( 4, 'dogs junios',10,'666777888','pruebaguarderia@gmail.com', 7,'alcorcon 39'),
   ( 5, 'pipi junios',5,'666777888','pruebaguarderia@gmail.com', 7,'sevilla 8');
 
+--UPDATE users SET dog_id = 1 WHERE id = 1 AND id = 5;
 --UPDATE users SET dog_id = 2 WHERE id = 3;
 --UPDATE users SET dog_id = 3 WHERE id = 6;
 --UPDATE users SET dog_id = 4 WHERE id = 8;
 --UPDATE users SET dog_id = 5 WHERE id = 2;
-
+--cuando hago unresgistro primero tengo que cargar el registro anterior modificar el dto y despues cargarlo
 commit;
