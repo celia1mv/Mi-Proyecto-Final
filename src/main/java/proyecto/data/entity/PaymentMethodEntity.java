@@ -22,10 +22,33 @@ public class PaymentMethodEntity {
     public PaymentMethodEntity() {
     }
 
-    public PaymentMethodEntity(Integer id, String description) {
+    public PaymentMethodEntity(Integer id, String description, UserEntity user) {
         this.id = id;
         this.description = description;
+        this.user = user;
     }
-    //Getter setter
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
 }

@@ -21,22 +21,27 @@ public class InvoiceEntity {
     private String status;
 
     // Relations
-    @ManyToOne()
-    @JoinColumn(name="user_id")
-    private UserEntity user;
+
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private ServicesUserEntity servicesUsers;
+
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private PaymentMethodEntity paymentMethods;
 
     //Constructor
 
     public InvoiceEntity() {
     }
 
-    public InvoiceEntity(Integer id, Date invoiceDate, float amount, String status) {
+    public InvoiceEntity(Integer id, Date invoiceDate, float amount, String status,
+                         ServicesUserEntity servicesUsers, PaymentMethodEntity paymentMethods) {
         this.id = id;
         this.invoiceDate = invoiceDate;
         this.amount = amount;
         this.status = status;
+        this.servicesUsers = servicesUsers;
+        this.paymentMethods = paymentMethods;
     }
-    //GetterSetter
 
     public Integer getId() {
         return id;
@@ -68,5 +73,21 @@ public class InvoiceEntity {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public ServicesUserEntity getServicesUsers() {
+        return servicesUsers;
+    }
+
+    public void setServicesUsers(ServicesUserEntity servicesUsers) {
+        this.servicesUsers = servicesUsers;
+    }
+
+    public PaymentMethodEntity getPaymentMethods() {
+        return paymentMethods;
+    }
+
+    public void setPaymentMethods(PaymentMethodEntity paymentMethods) {
+        this.paymentMethods = paymentMethods;
     }
 }

@@ -26,25 +26,31 @@ public class AddressEntity implements Serializable {
     //Relations
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "addresses")
-    private Set<UserEntity> user;
+    private Set<UserEntity> users;
 
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "addresses")
+    private Set<DogWalkerEntity> dogWalkers;
 
-    //Constructor
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "addresses")
+    private Set<DaycareEntity> daycares;
+
+    //Constructores
 
     public AddressEntity() {
     }
 
-    public AddressEntity(Integer id, String country, String province, String city, String postalCode, String address) {
+    public AddressEntity(Integer id, String country, String province, String city, String postalCode, String address,
+                         Set<UserEntity> users, Set<DogWalkerEntity> dogWalkers, Set<DaycareEntity> daycares) {
         this.id = id;
         this.country = country;
         this.province = province;
         this.city = city;
         this.postalCode = postalCode;
         this.address = address;
+        this.users = users;
+        this.dogWalkers = dogWalkers;
+        this.daycares = daycares;
     }
-
-    //getter y setter
-
 
     public Integer getId() {
         return id;
@@ -92,5 +98,29 @@ public class AddressEntity implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Set<UserEntity> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<UserEntity> users) {
+        this.users = users;
+    }
+
+    public Set<DogWalkerEntity> getDogWalkers() {
+        return dogWalkers;
+    }
+
+    public void setDogWalkers(Set<DogWalkerEntity> dogWalkers) {
+        this.dogWalkers = dogWalkers;
+    }
+
+    public Set<DaycareEntity> getDaycares() {
+        return daycares;
+    }
+
+    public void setDaycares(Set<DaycareEntity> daycares) {
+        this.daycares = daycares;
     }
 }

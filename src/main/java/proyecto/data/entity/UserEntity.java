@@ -36,47 +36,24 @@ public class UserEntity implements Serializable {
     //Relations
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-        name = "user_role",
-        joinColumns = @JoinColumn(name = "user_id"),
-        inverseJoinColumns = @JoinColumn(name = "role_id"))
+            name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     Set<RoleEntity> role;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "address",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "address_id"))
-    Set<AddressEntity> addresses;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "servicesUser",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "sevices_id"))
-    Set<AddressEntity> services;
+    private Set<DogWalkerEntity> dogwalkers;
 
-    @OneToMany (mappedBy = "user")
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<AddressEntity> addresses;
+
+    @OneToMany(mappedBy = "user")
     private Set<DogEntity> dogs;
 
-    @OneToMany (mappedBy = "user")
-    private Set<InvoiceEntity> invoice;
-
-    @OneToMany (mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     private Set<PaymentMethodEntity> paymentMethodes;
 
-//HACER CATALOGO
-
-
-    //(?)
-    @OneToMany()
-    @JoinColumn(name="daycare_id")
-    private DaycareEntity daycare;
-
-    @OneToMany()
-    @JoinColumn(name="dogWalker_id")
-    private DogWalkerEntity dogWalker;
-
-    // Getters and Setters
     public Integer getId() {
         return id;
     }
@@ -165,6 +142,27 @@ public class UserEntity implements Serializable {
         this.role = role;
     }
 
+    public Set<AddressEntity> getAddresses() {
+        return addresses;
+    }
 
+    public void setAddresses(Set<AddressEntity> addresses) {
+        this.addresses = addresses;
+    }
 
+    public Set<DogEntity> getDogs() {
+        return dogs;
+    }
+
+    public void setDogs(Set<DogEntity> dogs) {
+        this.dogs = dogs;
+    }
+
+    public Set<PaymentMethodEntity> getPaymentMethodes() {
+        return paymentMethodes;
+    }
+
+    public void setPaymentMethodes(Set<PaymentMethodEntity> paymentMethodes) {
+        this.paymentMethodes = paymentMethodes;
+    }
 }

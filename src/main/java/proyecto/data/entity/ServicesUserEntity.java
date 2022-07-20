@@ -5,7 +5,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Table(name = "servicesUser")
@@ -28,15 +27,23 @@ public class ServicesUserEntity implements Serializable {
     private Date bookingLastDate;
 
     // Relations
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "services")
-    private Set<UserEntity> user;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private UserEntity users;
+
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private CatalogueEntity catalogues;
+
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private DogEntity dogs;
+
     // Constructores
 
     public ServicesUserEntity() {
     }
 
     public ServicesUserEntity(Integer id, String username, String bookingStatus, Date creationDate,
-                              String serviceName, Date bookingStartDate, Date bookingLastDate) {
+                              String serviceName, Date bookingStartDate, Date bookingLastDate,
+                              UserEntity users, CatalogueEntity catalogues, DogEntity dogs) {
         this.id = id;
         this.username = username;
         this.bookingStatus = bookingStatus;
@@ -44,8 +51,10 @@ public class ServicesUserEntity implements Serializable {
         this.serviceName = serviceName;
         this.bookingStartDate = bookingStartDate;
         this.bookingLastDate = bookingLastDate;
+        this.users = users;
+        this.catalogues = catalogues;
+        this.dogs = dogs;
     }
-// Getter and Setters
 
     public Integer getId() {
         return id;
@@ -101,5 +110,29 @@ public class ServicesUserEntity implements Serializable {
 
     public void setBookingLastDate(Date bookingLastDate) {
         this.bookingLastDate = bookingLastDate;
+    }
+
+    public UserEntity getUsers() {
+        return users;
+    }
+
+    public void setUsers(UserEntity users) {
+        this.users = users;
+    }
+
+    public CatalogueEntity getCatalogues() {
+        return catalogues;
+    }
+
+    public void setCatalogues(CatalogueEntity catalogues) {
+        this.catalogues = catalogues;
+    }
+
+    public DogEntity getDogs() {
+        return dogs;
+    }
+
+    public void setDogs(DogEntity dogs) {
+        this.dogs = dogs;
     }
 }

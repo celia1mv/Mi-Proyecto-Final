@@ -21,22 +21,23 @@ public class DogEntity implements Serializable {
     private String name;
     private String race;
     private String sterilized;
-    @Column(name= "weight_kg")
+    @Column(name = "weight_kg")
     private Integer weight;
 
     //Relations
 
     @ManyToOne()
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private UserEntity user;
-
 
 
     //Builder
     public DogEntity() {
     }
 
-    public DogEntity(Integer id, Integer age, String allergies, Integer compatible, String gender, String informationAdditional, Integer microchip, String name, String race, String sterilized, Integer weight) {
+    public DogEntity(Integer id, Integer age, String allergies, Integer compatible, String gender,
+                     String informationAdditional, Integer microchip, String name, String race, String sterilized,
+                     Integer weight, UserEntity user) {
         this.id = id;
         this.age = age;
         this.allergies = allergies;
@@ -48,8 +49,9 @@ public class DogEntity implements Serializable {
         this.race = race;
         this.sterilized = sterilized;
         this.weight = weight;
+        this.user = user;
     }
-    //Getter y Setter
+
     public Integer getId() {
         return id;
     }
@@ -138,6 +140,11 @@ public class DogEntity implements Serializable {
         this.weight = weight;
     }
 
+    public UserEntity getUser() {
+        return user;
+    }
 
-
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
 }

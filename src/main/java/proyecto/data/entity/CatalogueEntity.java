@@ -3,7 +3,10 @@ package proyecto.data.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
+@Entity
+@Table(name = "CATALOGUE")
 public class CatalogueEntity implements Serializable {
 
     @Id
@@ -21,18 +24,21 @@ public class CatalogueEntity implements Serializable {
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private DogWalkerEntity dogWalkers;
 
+
     //Constructores
 
 
     public CatalogueEntity() {
     }
 
-    public CatalogueEntity(Integer id, String serviceType) {
+    public CatalogueEntity(Integer id, String serviceType, DaycareEntity daycares, DogWalkerEntity dogWalkers) {
         this.id = id;
         this.serviceType = serviceType;
+        this.daycares = daycares;
+        this.dogWalkers = dogWalkers;
     }
-
     //Getter y Setter
+
 
     public Integer getId() {
         return id;
@@ -49,9 +55,6 @@ public class CatalogueEntity implements Serializable {
     public void setServiceType(String serviceType) {
         this.serviceType = serviceType;
     }
-
-    //Getter y setter relations
-
 
     public DaycareEntity getDaycares() {
         return daycares;
