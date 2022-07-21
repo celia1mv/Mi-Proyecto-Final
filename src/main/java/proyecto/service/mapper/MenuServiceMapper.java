@@ -3,13 +3,13 @@ package proyecto.service.mapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import proyecto.data.entity.MenuEntity;
+import proyecto.data.entity.Menu;
 import proyecto.dto.MenuDTO;
 
 import java.util.stream.Collectors;
 
 @Service
-public class MenuServiceMapper extends AbstractServiceMapper<MenuEntity, MenuDTO> {
+public class MenuServiceMapper extends AbstractServiceMapper<Menu, MenuDTO> {
 
     private final RoleServiceMapper roleServiceMapper;
 
@@ -18,8 +18,8 @@ public class MenuServiceMapper extends AbstractServiceMapper<MenuEntity, MenuDTO
         this.roleServiceMapper = roleServiceMapper;
     }
 
-    public MenuEntity toEntity(MenuDTO dto) {
-        final MenuEntity entity = new MenuEntity();
+    public Menu toEntity(MenuDTO dto) {
+        final Menu entity = new Menu();
         entity.setId(dto.getId());
         entity.setDescription(dto.getDescription());
         entity.setActive(dto.getActive());
@@ -30,7 +30,7 @@ public class MenuServiceMapper extends AbstractServiceMapper<MenuEntity, MenuDTO
         return entity;
     }
 
-    public MenuDTO toDto(MenuEntity entity) {
+    public MenuDTO toDto(Menu entity) {
         final MenuDTO dto = new MenuDTO();
         dto.setId(entity.getId());
         dto.setDescription(entity.getDescription());

@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "ROLE")
-public class RoleEntity implements Serializable {
+public class Role implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,10 +16,10 @@ public class RoleEntity implements Serializable {
     private String roleName;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "role")
-    private Set<UserEntity> user;
+    private Set<User> user;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "role")
-    private Set<MenuEntity> menu;
+    private Set<Menu> menu;
 
     public Integer getId() {
         return id;
@@ -37,19 +37,19 @@ public class RoleEntity implements Serializable {
         this.roleName = roleName;
     }
 
-    public Set<UserEntity> getUsers() {
+    public Set<User> getUsers() {
         return user;
     }
 
-    public void setUsers(Set<UserEntity> userEntities) {
+    public void setUsers(Set<User> userEntities) {
         this.user = userEntities;
     }
 
-    public Set<MenuEntity> getMenus() {
+    public Set<Menu> getMenus() {
         return menu;
     }
 
-    public void setMenus(Set<MenuEntity> menuEntities) {
+    public void setMenus(Set<Menu> menuEntities) {
         this.menu = menuEntities;
     }
 }

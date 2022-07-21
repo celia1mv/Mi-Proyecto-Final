@@ -1,6 +1,6 @@
 package proyecto.dto;
 
-import proyecto.data.entity.AddressEntity;
+import proyecto.data.entity.Address;
 
 import java.util.Date;
 import java.util.Set;
@@ -16,7 +16,7 @@ public class UserDTO {
     private String email;
     private String phone;
     private Date birthDate;
-    private Set<AddressEntity> addresses;
+    private Set<Address> addresses;
     private Set<RoleDTO> roles;
 
     public Integer getId() {
@@ -99,11 +99,11 @@ public class UserDTO {
         this.birthDate = birthDate;
     }
 
-    public Set<AddressEntity> getAddresses() {
+    public Set<Address> getAddresses() {
         return addresses;
     }
 
-    public void setAddresses(Set<AddressEntity> addresses) {
+    public void setAddresses(Set<Address> addresses) {
         this.addresses = addresses;
     }
 

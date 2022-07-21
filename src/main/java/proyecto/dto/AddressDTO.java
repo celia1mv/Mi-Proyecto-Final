@@ -1,6 +1,6 @@
 package proyecto.dto;
 
-import proyecto.data.entity.UserEntity;
+import proyecto.data.entity.User;
 
 import java.util.Set;
 
@@ -11,7 +11,7 @@ public class AddressDTO {
     private String city;
     private String postalCode;
     private String address;
-    private Set<UserEntity> users;
+    private Set<User> users;
     private Set<DogWalkerDTO> dogWalkers;
     private Set<DaycareDTO> daycares;
 
@@ -63,11 +63,11 @@ public class AddressDTO {
         this.address = address;
     }
 
-    public Set<UserEntity> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<UserEntity> users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
 

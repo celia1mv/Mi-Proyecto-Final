@@ -2,11 +2,11 @@ package proyecto.data.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import proyecto.data.entity.UserEntity;
+import proyecto.data.entity.User;
 
-public interface UserRepository extends JpaRepository<UserEntity, Integer> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
-    UserEntity findByUserNameAndActiveTrue(String username);
+    User findByUserNameAndActiveTrue(String username);
 
 
 }

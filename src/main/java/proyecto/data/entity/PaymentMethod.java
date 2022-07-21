@@ -1,12 +1,10 @@
 package proyecto.data.entity;
 
-import org.apache.catalina.User;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "paymentMethod")
-public class PaymentMethodEntity {
+public class PaymentMethod {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -15,14 +13,14 @@ public class PaymentMethodEntity {
     //Relaciones
     @ManyToOne()
     @JoinColumn(name="user_id")
-    private UserEntity user;
+    private User user;
 
     //Constructores
 
-    public PaymentMethodEntity() {
+    public PaymentMethod() {
     }
 
-    public PaymentMethodEntity(Integer id, String description, UserEntity user) {
+    public PaymentMethod(Integer id, String description, User user) {
         this.id = id;
         this.description = description;
         this.user = user;
@@ -44,11 +42,11 @@ public class PaymentMethodEntity {
         this.description = description;
     }
 
-    public UserEntity getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(UserEntity user) {
+    public void setUser(User user) {
         this.user = user;
     }
 }

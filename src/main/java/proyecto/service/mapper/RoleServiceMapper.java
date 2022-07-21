@@ -1,20 +1,20 @@
 package proyecto.service.mapper;
 
 import org.springframework.stereotype.Service;
-import proyecto.data.entity.RoleEntity;
+import proyecto.data.entity.Role;
 import proyecto.dto.RoleDTO;
 
 @Service
-public class RoleServiceMapper extends AbstractServiceMapper<RoleEntity, RoleDTO> {
+public class RoleServiceMapper extends AbstractServiceMapper<Role, RoleDTO> {
 
-    public RoleEntity toEntity(RoleDTO dto) {
-        final RoleEntity entity = new RoleEntity();
+    public Role toEntity(RoleDTO dto) {
+        final Role entity = new Role();
         entity.setId(dto.getId());
         entity.setRoleName(dto.getRoleName());
         return entity;
     }
 
-    public RoleDTO toDto(RoleEntity entity) {
+    public RoleDTO toDto(Role entity) {
         final RoleDTO dto = new RoleDTO();
         dto.setId(entity.getId());
         dto.setRoleName(entity.getRoleName());

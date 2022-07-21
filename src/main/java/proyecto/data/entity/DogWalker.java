@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "dogWalker")
-public class DogWalkerEntity implements Serializable {
+public class DogWalker implements Serializable {
     //Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,22 +38,22 @@ public class DogWalkerEntity implements Serializable {
 
     //Relations
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "dogwalkers")
-    private Set<UserEntity> users;
+    private Set<User> users;
 
     @ManyToMany (fetch = FetchType.EAGER)
-    private Set<AddressEntity> addresses;
+    private Set<Address> addresses;
 
     @OneToMany (mappedBy = "dogWalkers")
-    private Set<CatalogueEntity> catalogue;
+    private Set<Catalogue> catalogue;
 
     // Constructor
-    public DogWalkerEntity() {
+    public DogWalker() {
     }
 
-    public DogWalkerEntity(Integer id, String address, String availability, Integer max_num_dogs,
-                           String weight_dogs, boolean sterilized, String reviews, float assessment,
-                           float price_walk, String profile_picture, String gallery, Set<DogWalkerEntity> dogWalkers,
-                           Set<AddressEntity> addresses, Set<CatalogueEntity> catalogue) {
+    public DogWalker(Integer id, String address, String availability, Integer max_num_dogs,
+                     String weight_dogs, boolean sterilized, String reviews, float assessment,
+                     float price_walk, String profile_picture, String gallery, Set<DogWalker> dogWalkers,
+                     Set<Address> addresses, Set<Catalogue> catalogue) {
         this.id = id;
         this.address = address;
         this.availability = availability;

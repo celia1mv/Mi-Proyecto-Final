@@ -12,8 +12,8 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import proyecto.data.entity.RoleEntity;
-import proyecto.data.entity.UserEntity;
+import proyecto.data.entity.Role;
+import proyecto.data.entity.User;
 import proyecto.data.repository.UserRepository;
 
 import java.util.Collection;
@@ -35,7 +35,7 @@ public class CustomUserAuthenticationProvider implements AuthenticationProvider 
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         final UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
 
-        final UserEntity user = token.getName() == null ? null : userRepository.findByUserNameAndActiveTrue(token.getName());
+        final User user = token.getName() == null ? null : userRepository.findByUserNameAndActiveTrue(token.getName());
         if (user == null) {
             throw new UsernameNotFoundException("Invalid username/password");
         }
@@ -52,9 +52,9 @@ public class CustomUserAuthenticationProvider implements AuthenticationProvider 
         return UsernamePasswordAuthenticationToken.class.equals(authentication);
     }
 
-    private Collection<? extends GrantedAuthority> createAuthorities(UserEntity  user) {
+    private Collection<? extends GrantedAuthority> createAuthorities(User user) {
         return AuthorityUtils.createAuthorityList(user.getRole().stream()
-                .map(RoleEntity::getRoleName)
+                .map(Role::getRoleName)
                 .toArray(String[]::new)
         );
     }

@@ -5,7 +5,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "MENU")
-public class MenuEntity {
+public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -23,12 +23,12 @@ public class MenuEntity {
         name = "menu_role",
         joinColumns = @JoinColumn(name = "menu_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id"))
-    Set<RoleEntity> role;
+    Set<Role> role;
 
 
     // Constructor
 
-    public MenuEntity() {
+    public Menu() {
     }
 
     // Getters and Setters
@@ -73,11 +73,11 @@ public class MenuEntity {
         this.url = url;
     }
 
-    public Set<RoleEntity> getRole() {
+    public Set<Role> getRole() {
         return role;
     }
 
-    public void setRole(Set<RoleEntity> role) {
+    public void setRole(Set<Role> role) {
         this.role = role;
     }
 }

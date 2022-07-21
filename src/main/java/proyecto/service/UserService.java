@@ -4,13 +4,13 @@ package proyecto.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import proyecto.data.entity.UserEntity;
+import proyecto.data.entity.User;
 import proyecto.data.repository.UserRepository;
 import proyecto.dto.UserDTO;
 import proyecto.service.mapper.UserServiceMapper;
 
 @Service
-public class UserService extends AbstractBusinessService<UserEntity, Integer, UserDTO, UserRepository, UserServiceMapper> {
+public class UserService extends AbstractBusinessService<User, Integer, UserDTO, UserRepository, UserServiceMapper> {
 
 
     protected UserService(UserRepository repository, UserServiceMapper serviceMapper) {
@@ -25,8 +25,8 @@ public class UserService extends AbstractBusinessService<UserEntity, Integer, Us
     //Modificar un libro
     @Override
     public UserDTO save(UserDTO dto) {
-        final UserEntity entity = getServiceMapper().toEntity(dto);
-        final UserEntity savedEntity = this.getRepository().save(entity);
+        final User entity = getServiceMapper().toEntity(dto);
+        final User savedEntity = this.getRepository().save(entity);
         return getServiceMapper().toDto(savedEntity);
     }
 }

@@ -3,14 +3,14 @@ package proyecto.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import proyecto.data.entity.RoleEntity;
+import proyecto.data.entity.Role;
 import proyecto.data.repository.RoleRepository;
 import proyecto.data.repository.UserRepository;
 import proyecto.dto.RoleDTO;
 import proyecto.service.mapper.RoleServiceMapper;
 
 @Service
-public class RoleService extends AbstractBusinessService<RoleEntity, Integer, RoleDTO, RoleRepository, RoleServiceMapper> {
+public class RoleService extends AbstractBusinessService<Role, Integer, RoleDTO, RoleRepository, RoleServiceMapper> {
 
     private final UserRepository userRepository;
 

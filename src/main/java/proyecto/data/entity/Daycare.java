@@ -6,7 +6,7 @@ import java.util.Set;
 
     @Entity
     @Table(name = "daycare")
-    public class DaycareEntity implements Serializable {
+    public class Daycare implements Serializable {
         //Attributes
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,17 +28,17 @@ import java.util.Set;
         // Relations
 
         @ManyToMany(fetch = FetchType.EAGER)
-        private Set<AddressEntity> addresses;
+        private Set<Address> addresses;
 
         @OneToMany(mappedBy = "daycares")
-        private Set<CatalogueEntity> catalogue;
+        private Set<Catalogue> catalogue;
 
 
         // Constructor
-        public DaycareEntity() {
+        public Daycare() {
         }
-        public DaycareEntity(Integer id, String name, float nightPrice, String phone, String email, String address,
-                             float ranking, Set<AddressEntity> addresses, Set<CatalogueEntity> catalogue) {
+        public Daycare(Integer id, String name, float nightPrice, String phone, String email, String address,
+                       float ranking, Set<Address> addresses, Set<Catalogue> catalogue) {
             this.id = id;
             this.name = name;
             this.nightPrice = nightPrice;
@@ -106,19 +106,19 @@ import java.util.Set;
             this.ranking = ranking;
         }
 
-        public Set<AddressEntity> getAddresses() {
+        public Set<Address> getAddresses() {
             return addresses;
         }
 
-        public void setAddresses(Set<AddressEntity> addresses) {
+        public void setAddresses(Set<Address> addresses) {
             this.addresses = addresses;
         }
 
-        public Set<CatalogueEntity> getCatalogue() {
+        public Set<Catalogue> getCatalogue() {
             return catalogue;
         }
 
-        public void setCatalogue(Set<CatalogueEntity> catalogue) {
+        public void setCatalogue(Set<Catalogue> catalogue) {
             this.catalogue = catalogue;
         }
     }

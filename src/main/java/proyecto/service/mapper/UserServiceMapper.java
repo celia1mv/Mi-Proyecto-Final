@@ -1,13 +1,13 @@
 package proyecto.service.mapper;
 
 import org.springframework.stereotype.Service;
-import proyecto.data.entity.UserEntity;
+import proyecto.data.entity.User;
 import proyecto.dto.UserDTO;
 
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceMapper extends AbstractServiceMapper<UserEntity, UserDTO>{
+public class UserServiceMapper extends AbstractServiceMapper<User, UserDTO>{
     private final RoleServiceMapper roleServiceMapper;
 
     public UserServiceMapper(RoleServiceMapper roleServiceMapper) {
@@ -15,8 +15,8 @@ public class UserServiceMapper extends AbstractServiceMapper<UserEntity, UserDTO
     }
 
     @Override
-    public UserEntity toEntity(UserDTO userDTO) {
-        UserEntity entity = new UserEntity();
+    public User toEntity(UserDTO userDTO) {
+        User entity = new User();
         entity.setId(userDTO.getId());
         entity.setUserName(userDTO.getUserName());
         entity.setPassword(userDTO.getPassword());
@@ -35,7 +35,7 @@ public class UserServiceMapper extends AbstractServiceMapper<UserEntity, UserDTO
     }
 
     @Override
-    public UserDTO toDto(UserEntity entity) {
+    public UserDTO toDto(User entity) {
         UserDTO dto = new UserDTO();
         dto.setId(entity.getId());
         dto.setActive(entity.isActive());

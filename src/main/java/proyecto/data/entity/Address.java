@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "address")
-public class AddressEntity implements Serializable {
+public class Address implements Serializable {
     // Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,21 +26,21 @@ public class AddressEntity implements Serializable {
     //Relations
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "addresses")
-    private Set<UserEntity> users;
+    private Set<User> users;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "addresses")
-    private Set<DogWalkerEntity> dogWalkers;
+    private Set<DogWalker> dogWalkers;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "addresses")
-    private Set<DaycareEntity> daycares;
+    private Set<Daycare> daycares;
 
     //Constructores
 
-    public AddressEntity() {
+    public Address() {
     }
 
-    public AddressEntity(Integer id, String country, String province, String city, String postalCode, String address,
-                         Set<UserEntity> users, Set<DogWalkerEntity> dogWalkers, Set<DaycareEntity> daycares) {
+    public Address(Integer id, String country, String province, String city, String postalCode, String address,
+                   Set<User> users, Set<DogWalker> dogWalkers, Set<Daycare> daycares) {
         this.id = id;
         this.country = country;
         this.province = province;
@@ -100,27 +100,27 @@ public class AddressEntity implements Serializable {
         this.address = address;
     }
 
-    public Set<UserEntity> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<UserEntity> users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
 
-    public Set<DogWalkerEntity> getDogWalkers() {
+    public Set<DogWalker> getDogWalkers() {
         return dogWalkers;
     }
 
-    public void setDogWalkers(Set<DogWalkerEntity> dogWalkers) {
+    public void setDogWalkers(Set<DogWalker> dogWalkers) {
         this.dogWalkers = dogWalkers;
     }
 
-    public Set<DaycareEntity> getDaycares() {
+    public Set<Daycare> getDaycares() {
         return daycares;
     }
 
-    public void setDaycares(Set<DaycareEntity> daycares) {
+    public void setDaycares(Set<Daycare> daycares) {
         this.daycares = daycares;
     }
 }

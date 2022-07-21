@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
-import proyecto.data.entity.UserEntity;
+import proyecto.data.entity.User;
 import proyecto.dto.RoleDTO;
 import proyecto.dto.UserDTO;
 import proyecto.service.MenuService;
@@ -39,7 +39,7 @@ public class UserController extends AbstractController<UserDTO>  {
     @GetMapping("/users")
     public String getAll(@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size,
                          Model model) {
-        final UserEntity user = ((UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        final User user = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         final Page<UserDTO> all = this.service.findAll( PageRequest.of(page.orElse(1) - 1,
                 size.orElse(10)));
         model

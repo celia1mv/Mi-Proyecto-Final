@@ -2,7 +2,7 @@ package proyecto.service.Daycare;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import proyecto.data.entity.DaycareEntity;
+import proyecto.data.entity.Daycare;
 import proyecto.data.repository.DaycareRepository;
 import proyecto.dto.DaycareDTO;
 import proyecto.service.mapper.DaycareMapper;
@@ -22,9 +22,9 @@ public class DaycareServiceImpl implements DaycareService{
     public List<DaycareDTO> listDaycare() {
         List<DaycareDTO>listDaycareDto = new ArrayList<>();
 
-        List<DaycareEntity> DaycareEntityList = repository.findAll();
+        List<Daycare> daycareList = repository.findAll();
 
-       DaycareEntityList.forEach(Daycare -> {
+       daycareList.forEach(Daycare -> {
             listDaycareDto.add(mapper.convertEntityToDto(Daycare));
         });
 
@@ -35,9 +35,9 @@ public class DaycareServiceImpl implements DaycareService{
     public List<DaycareDTO> findByAddress(String address){
         List<DaycareDTO>listDaycareDto = new ArrayList<>();
 
-        List<DaycareEntity> DaycareEntityList = repository.findByAddressContaining(String.valueOf(address));
+        List<Daycare> daycareList = repository.findByAddressContaining(String.valueOf(address));
 
-        DaycareEntityList.forEach(Daycare -> {
+        daycareList.forEach(Daycare -> {
             listDaycareDto.add(mapper.convertEntityToDto(Daycare));
         });
 
@@ -48,9 +48,9 @@ public class DaycareServiceImpl implements DaycareService{
     public List<DaycareDTO> filterDaycareByPrice(String priceMax, String priceMin) {
         List<DaycareDTO>listDaycareDto = new ArrayList<>();
 
-        List<DaycareEntity> DaycareEntityList = repository.findPriceFilter(Float.parseFloat(priceMax),Float.parseFloat(priceMin));
+        List<Daycare> daycareList = repository.findPriceFilter(Float.parseFloat(priceMax),Float.parseFloat(priceMin));
 
-        DaycareEntityList.forEach(Daycare -> {
+        daycareList.forEach(Daycare -> {
             listDaycareDto.add(mapper.convertEntityToDto(Daycare));
         });
 

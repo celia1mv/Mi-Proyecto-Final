@@ -3,19 +3,19 @@ package proyecto.data.repository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import proyecto.data.entity.DaycareEntity;
+import proyecto.data.entity.Daycare;
 
 import java.util.List;
 
 @Repository
-public interface DaycareRepository extends CrudRepository<DaycareEntity,Long> {
+public interface DaycareRepository extends CrudRepository<Daycare,Long> {
 
-    List<DaycareEntity> findAll();
+    List<Daycare> findAll();
 
-    List<DaycareEntity> findByAddressContaining(String address);
+    List<Daycare> findByAddressContaining(String address);
 
     @Query(value = "SELECT * FROM daycare WHERE night_price > :priceMax AND night_price < :priceMin", nativeQuery = true)
-    List<DaycareEntity> findPriceFilter(float priceMax, float priceMin);
+    List<Daycare> findPriceFilter(float priceMax, float priceMin);
 
 
 }

@@ -1,21 +1,18 @@
 package proyecto.data.entity;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "DOG")
-public class DogEntity implements Serializable {
+public class Dog implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,13 +32,13 @@ public class DogEntity implements Serializable {
     private Integer weight;
 
     @OneToMany(mappedBy = "dog")
-    private Set<UserEntity> user;
+    private Set<User> user;
 
-    public DogEntity() {  }
+    public Dog() {  }
 
-    public DogEntity(Long id, Integer age, String allergies, Integer compatible, String gender,
-                     String informationAdditional, Integer microchip, String name, String race, String sterilized,
-                     Integer weight, Set<UserEntity> user) {
+    public Dog(Long id, Integer age, String allergies, Integer compatible, String gender,
+               String informationAdditional, Integer microchip, String name, String race, String sterilized,
+               Integer weight, Set<User> user) {
         this.id = id;
         this.age = age;
         this.allergies = allergies;
@@ -144,11 +141,11 @@ public class DogEntity implements Serializable {
         this.weight = weight;
     }
 
-    public Set<UserEntity> getUser() {
+    public Set<User> getUser() {
         return user;
     }
 
-    public void setUser(Set<UserEntity> user) {
+    public void setUser(Set<User> user) {
         this.user = user;
     }
 }

@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "invoice")
-public class InvoiceEntity {
+public class Invoice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,18 +23,18 @@ public class InvoiceEntity {
     // Relations
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private ServicesUserEntity servicesUsers;
+    private ServicesUser servicesUsers;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private PaymentMethodEntity paymentMethods;
+    private PaymentMethod paymentMethods;
 
     //Constructor
 
-    public InvoiceEntity() {
+    public Invoice() {
     }
 
-    public InvoiceEntity(Integer id, Date invoiceDate, float amount, String status,
-                         ServicesUserEntity servicesUsers, PaymentMethodEntity paymentMethods) {
+    public Invoice(Integer id, Date invoiceDate, float amount, String status,
+                   ServicesUser servicesUsers, PaymentMethod paymentMethods) {
         this.id = id;
         this.invoiceDate = invoiceDate;
         this.amount = amount;
@@ -75,19 +75,19 @@ public class InvoiceEntity {
         this.status = status;
     }
 
-    public ServicesUserEntity getServicesUsers() {
+    public ServicesUser getServicesUsers() {
         return servicesUsers;
     }
 
-    public void setServicesUsers(ServicesUserEntity servicesUsers) {
+    public void setServicesUsers(ServicesUser servicesUsers) {
         this.servicesUsers = servicesUsers;
     }
 
-    public PaymentMethodEntity getPaymentMethods() {
+    public PaymentMethod getPaymentMethods() {
         return paymentMethods;
     }
 
-    public void setPaymentMethods(PaymentMethodEntity paymentMethods) {
+    public void setPaymentMethods(PaymentMethod paymentMethods) {
         this.paymentMethods = paymentMethods;
     }
 }

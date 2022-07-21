@@ -3,12 +3,11 @@ package proyecto.data.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "USERS")
-public class UserEntity implements Serializable {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,21 +38,21 @@ public class UserEntity implements Serializable {
             name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    Set<RoleEntity> role;
+    Set<Role> role;
 
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private Set<DogWalkerEntity> dogwalkers;
+    private Set<DogWalker> dogwalkers;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private Set<AddressEntity> addresses;
+    private Set<Address> addresses;
 
     @ManyToOne()
     @JoinColumn(name="dog_id")
-    private DogEntity dog;
+    private Dog dog;
 
     @OneToMany(mappedBy = "user")
-    private Set<PaymentMethodEntity> paymentMethodes;
+    private Set<PaymentMethod> paymentMethodes;
 
     public Integer getId() {
         return id;
@@ -135,43 +134,43 @@ public class UserEntity implements Serializable {
         this.birthDate = birthDate;
     }
 
-    public Set<RoleEntity> getRole() {
+    public Set<Role> getRole() {
         return role;
     }
 
-    public void setRole(Set<RoleEntity> role) {
+    public void setRole(Set<Role> role) {
         this.role = role;
     }
 
-    public Set<AddressEntity> getAddresses() {
+    public Set<Address> getAddresses() {
         return addresses;
     }
 
-    public void setAddresses(Set<AddressEntity> addresses) {
+    public void setAddresses(Set<Address> addresses) {
         this.addresses = addresses;
     }
 
-    public Set<DogWalkerEntity> getDogwalkers() {
+    public Set<DogWalker> getDogwalkers() {
         return dogwalkers;
     }
 
-    public void setDogwalkers(Set<DogWalkerEntity> dogwalkers) {
+    public void setDogwalkers(Set<DogWalker> dogwalkers) {
         this.dogwalkers = dogwalkers;
     }
 
-    public DogEntity getDog() {
+    public Dog getDog() {
         return dog;
     }
 
-    public void setDog(DogEntity dog) {
+    public void setDog(Dog dog) {
         this.dog = dog;
     }
 
-    public Set<PaymentMethodEntity> getPaymentMethodes() {
+    public Set<PaymentMethod> getPaymentMethodes() {
         return paymentMethodes;
     }
 
-    public void setPaymentMethodes(Set<PaymentMethodEntity> paymentMethodes) {
+    public void setPaymentMethodes(Set<PaymentMethod> paymentMethodes) {
         this.paymentMethodes = paymentMethodes;
     }
 }

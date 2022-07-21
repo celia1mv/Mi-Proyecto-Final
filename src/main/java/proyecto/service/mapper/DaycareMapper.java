@@ -1,24 +1,24 @@
 package proyecto.service.mapper;
 
 import org.springframework.context.annotation.Configuration;
-import proyecto.data.entity.DaycareEntity;
+import proyecto.data.entity.Daycare;
 import proyecto.dto.DaycareDTO;
 
 
     @Configuration
     public class DaycareMapper {
-        public DaycareDTO convertEntityToDto(DaycareEntity daycareEntity) {
+        public DaycareDTO convertEntityToDto(Daycare daycare) {
             DaycareDTO daycareDto = new DaycareDTO();
-            daycareDto.setId(daycareEntity.getId());
-            daycareDto.setName(daycareEntity.getName());
-            daycareDto.setAddress(daycareEntity.getAddress());
-            daycareDto.setNightPrice(daycareEntity.getNightPrice());
-            daycareDto.setRanking(daycareEntity.getRanking());
+            daycareDto.setId(daycare.getId());
+            daycareDto.setName(daycare.getName());
+            daycareDto.setAddress(daycare.getAddress());
+            daycareDto.setNightPrice(daycare.getNightPrice());
+            daycareDto.setRanking(daycare.getRanking());
             return daycareDto;
         }
 
-        public DaycareEntity toEntity(DaycareDTO daycareDTO) {
-            final DaycareEntity entity = new DaycareEntity();
+        public Daycare toEntity(DaycareDTO daycareDTO) {
+            final Daycare entity = new Daycare();
             entity.setId(daycareDTO.getId());
             entity.setName(daycareDTO.getName());
             entity.setNightPrice(daycareDTO.getNightPrice());

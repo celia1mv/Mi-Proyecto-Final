@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "servicesUser")
-public class ServicesUserEntity implements Serializable {
+public class ServicesUser implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -28,22 +28,22 @@ public class ServicesUserEntity implements Serializable {
 
     // Relations
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private UserEntity users;
+    private User users;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private CatalogueEntity catalogues;
+    private Catalogue catalogues;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private DogEntity dogs;
+    private Dog dogs;
 
     // Constructores
 
-    public ServicesUserEntity() {
+    public ServicesUser() {
     }
 
-    public ServicesUserEntity(Integer id, String username, String bookingStatus, Date creationDate,
-                              String serviceName, Date bookingStartDate, Date bookingLastDate,
-                              UserEntity users, CatalogueEntity catalogues, DogEntity dogs) {
+    public ServicesUser(Integer id, String username, String bookingStatus, Date creationDate,
+                        String serviceName, Date bookingStartDate, Date bookingLastDate,
+                        User users, Catalogue catalogues, Dog dogs) {
         this.id = id;
         this.username = username;
         this.bookingStatus = bookingStatus;
@@ -112,27 +112,27 @@ public class ServicesUserEntity implements Serializable {
         this.bookingLastDate = bookingLastDate;
     }
 
-    public UserEntity getUsers() {
+    public User getUsers() {
         return users;
     }
 
-    public void setUsers(UserEntity users) {
+    public void setUsers(User users) {
         this.users = users;
     }
 
-    public CatalogueEntity getCatalogues() {
+    public Catalogue getCatalogues() {
         return catalogues;
     }
 
-    public void setCatalogues(CatalogueEntity catalogues) {
+    public void setCatalogues(Catalogue catalogues) {
         this.catalogues = catalogues;
     }
 
-    public DogEntity getDogs() {
+    public Dog getDogs() {
         return dogs;
     }
 
-    public void setDogs(DogEntity dogs) {
+    public void setDogs(Dog dogs) {
         this.dogs = dogs;
     }
 }
