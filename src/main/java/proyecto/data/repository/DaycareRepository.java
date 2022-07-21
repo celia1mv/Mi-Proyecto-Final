@@ -1,14 +1,14 @@
 package proyecto.data.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import proyecto.data.entity.Daycare;
 
 import java.util.List;
 
 @Repository
-public interface DaycareRepository extends CrudRepository<Daycare,Long> {
+public interface DaycareRepository extends JpaRepository<Daycare,Integer> {
 
     List<Daycare> findAll();
 

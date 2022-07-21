@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="https://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
+	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 	<meta name="viewport" content="width=device-width"></meta>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
@@ -31,29 +31,65 @@
 <!-- navbar navbar-expand-sm bg-light --- este es el de JM-->
 
 <!-- NavBar del Index NO LOGADO -->
-	<div class="navbar navbar-inverse navbar-fixed-top headroom"  th:fragment="navBarIndexIn">
-		<div class="container fluid">
-			<div class="navbar-header">
-				<!-- Button for smallest screens -->
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-				<a class="navbar-brand" href="#"><img th:src="@{/images/logo.png}" alt="DogGo"></a>
-			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav pull-right">
-					<li class="active"><a th:href="@{/index}">Inicio</a></li>
-					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown">Servicios <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a th:href="@{/daycare}">Residencias</a></li>
-							<li><a th:href="@{/dogwalker}">Paseadores</a></li>
-						</ul>
-					</li>
-					<li><a class="btn" th:href="@{/login}">Iniciar sesión / Registrarse</a></li>
-				</ul>
-			</div><!--/.nav-collapse -->
+<div class="navbar navbar-inverse navbar-fixed-top headroom"  th:fragment="navBarIndexIn">
+	<div class="container fluid">
+		<div class="navbar-header">
+			<!-- Button for smallest screens -->
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+			<a class="navbar-brand" href="#"><img th:src="@{/images/logo.png}" alt="DogGo"></a>
 		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav pull-right">
+				<li class="active"><a th:href="@{/index}">Inicio</a></li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown">Servicios <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a th:href="@{/daycare}">Residencias</a></li>
+						<li><a th:href="@{/dogwalker}">Paseadores</a></li>
+					</ul>
+				</li>
+
+				<li sec:authorize="isAuthenticated()">
+					<!--a class="btn" th:href="@{/index}">Cerrar sesión</a-->
+					<a class="btn">
+						<form th:action="@{/logout}" method="post">
+							<input type="submit"/>
+						</form>Cerrar sesión</a>
+				</li>
+				<li class="active"><a th:href="@{/users}">Usuarios</a></li>
+				<li sec:authorize="!isAuthenticated()"><a class="btn" th:href="@{/login}">Iniciar sesión / Registrarse</a></li>
+
+
+
+			</ul>
+		</div><!--/.nav-collapse -->
 	</div>
-	<!-- /.navbar -->
+</div>
+<!-- /.navbar -->
+
+<!-- NavBar del LOGIN -->
+<div class="navbar navbar-inverse navbar-fixed-top headroom"  th:fragment="navBarLogIn">
+	<div class="container fluid">
+		<div class="navbar-header">
+			<!-- Button for smallest screens -->
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+			<a class="navbar-brand" href="#"><img th:src="@{/images/logo.png}" alt="DogGo"></a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav pull-right">
+				<li class="active"><a th:href="@{/index}">Inicio</a></li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown">Servicios <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a th:href="@{/daycare}">Residencias</a></li>
+						<li><a th:href="@{/dogwalker}">Paseadores</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div><!--/.nav-collapse -->
+	</div>
+</div>
+<!-- /.navbar -->
 
 
 
@@ -84,7 +120,7 @@
 <!-- /.navbar -->
 
 
-	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script th:src="@{/js/headroom.min.js}"></script>

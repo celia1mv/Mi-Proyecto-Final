@@ -16,7 +16,7 @@
     <h1>Daycare's  Management</h1>
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Daycares</li>
+        <li class="active">Dogwalker</li>
     </ol>
 </div>
 <div layout:fragment="content">
@@ -24,7 +24,7 @@
         <div class="col-xs-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <a class="box-title btn btn-primary" th:href="@{/daycare/create}">New daycare</a>
+                    <a class="box-title btn btn-primary" th:href="@{/dogwalker/create}">New dogwalker</a>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -45,7 +45,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="item,iter : ${daycare}">
+                                <tr th:each="item,iter : ${dogwalker}">
                                     <td th:text="${item.id}"></td>
                                     <td th:text="${item.name}"></td>
                                     <td th:text="${item.nightPrice}"></td>
@@ -54,34 +54,34 @@
                                     <td th:text="${item.address}"></td>
                                     <td th:text="${item.ranking}"></td>
                                     <td>
-                                        <a href="#" class="btn btn-default" th:href="@{'/daycare/' + ${item.id}}"
+                                        <a href="#" class="btn btn-default" th:href="@{'/dogwalker/' + ${item.id}}"
                                            title="View"><span class="glyphicon glyphicon glyphicon-eye-open"></span></a>
-                                        <a href="#" class="btn btn-default" th:href="@{'/daycare/' + ${item.id} + '/edit'}"
+                                        <a href="#" class="btn btn-default" th:href="@{'/dogwalker/' + ${item.id} + '/edit'}"
                                            title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
                                         <button class="btn btn-danger" type="submit" value="Delete"
-                                                th:formaction="'/daycare/' + ${item.id} + '/delete'">
+                                                th:formaction="'/dogwalker/' + ${item.id} + '/delete'">
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </button>
                                         <!--                                        <a href="#" class="btn btn-default" th:href="@{'/tasks/' + ${task.id} + '/delete'}"-->
                                         <!--                                           title="Delete"><span class="glyphicon glyphicon-trash"></span></a>-->
                                     </td>
                                 </tr>
-                                <tr th:if="${#lists.isEmpty(daycare.content)}">
-                                    <td colspan="13" class="text-center">No daycares</td>
+                                <tr th:if="${#lists.isEmpty(dogwalker.content)}">
+                                    <td colspan="13" class="text-center">No dogwalkers</td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
                     </form>
                 </div>
-                <div th:if="${not #lists.isEmpty(daycare.content)}">
+                <div th:if="${not #lists.isEmpty(dogwalker.content)}">
                     <div class="text-center">
                         <nav>
                             <ul class="pagination" sd:pagination="full">
-                                <div th:if="${daycare.totalPages > 0}" class="pagination"
+                                <div th:if="${dogwalker.totalPages > 0}" class="pagination"
                                      th:each="pageNumber : ${pageNumbers}">
-                                    <li th:class="${pageNumber==daycare.number + 1} ? active">
-                                        <a href="#" th:href="@{/daycare(size=${daycare.size}, page=${pageNumber})}"
+                                    <li th:class="${pageNumber==dogwalker.number + 1} ? active">
+                                        <a href="#" th:href="@{/dogwalker(size=${dogwalker.size}, page=${pageNumber})}"
                                            th:text=${pageNumber}></a>
                                     </li>
                                 </div>

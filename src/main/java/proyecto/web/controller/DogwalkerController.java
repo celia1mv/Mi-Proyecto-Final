@@ -13,67 +13,67 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import proyecto.dto.DaycareDTO;
+import proyecto.dto.DogWalkerDTO;
 import proyecto.service.DaycareService;
+import proyecto.service.DogwalkerService;
 import proyecto.service.MenuService;
 
-import java.util.List;
 import java.util.Optional;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Controller
-public class DaycareController extends AbstractController<DaycareDTO>{
+public class DogwalkerController extends AbstractController<DogWalkerDTO>{
 
-    private final DaycareService service;
+    private final DogwalkerService service;
     @Autowired
-    protected DaycareController(MenuService menuService, DaycareService servicio) {
+    protected DogwalkerController(MenuService menuService, DogwalkerService servicio) {
         super(menuService);
         this.service = servicio;
     }
-    @GetMapping("/daycare")
+    @GetMapping("/dogwalker")
     @PreAuthorize("hasAuthority('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public String getAll(@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size,
                          Model model) {
         //final User user = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        final Page<DaycareDTO> all = this.service.findAll( PageRequest.of(page.orElse(1) - 1,
+        final Page<DogWalkerDTO> all = this.service.findAll( PageRequest.of(page.orElse(1) - 1,
                 size.orElse(10)));
         model
                 //.addAttribute("username", user.getUserName())
-                .addAttribute("daycare", all)
+                .addAttribute("dogwalker", all)
                 .addAttribute(pageNumbersAttributeKey, getPageNumbers(all));
-        return "daycare/list";
+        return "dogwalker/list";
     }
 
-    @GetMapping("/daycare/{id}")
+    @GetMapping("/dogwalker/{id}")
     @PostAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     public String detail(@PathVariable("id") Integer id, ModelMap model) {
-        model.addAttribute("daycare", this.service.findById(id).get());
-        return "daycare/detail";
+        model.addAttribute("dogwalker", this.service.findById(id).get());
+        return "dogwalker/detail";
     }
 
-    @GetMapping("/daycare/{id}/edit")
+    @GetMapping("/dogwalker/{id}/edit")
     @PostAuthorize("hasRole('ROLE_ADMIN') ")
     public String edit(@PathVariable("id") Integer id, ModelMap model) {
-        model.addAttribute("daycare", this.service.findById(id).get());
-        return "daycare/edit";
+        model.addAttribute("dogwalker", this.service.findById(id).get());
+        return "dogwalker/edit";
     }
 
-    @GetMapping("/daycare/create")
+    @GetMapping("/dogwalker/create")
     @PostAuthorize("hasRole('ROLE_ADMIN') ")
     public String create(ModelMap model) {
         final DaycareDTO dto = new DaycareDTO();
-        model.addAttribute("daycare", dto);
-        return "daycare/edit";
+        model.addAttribute("dogwalker", dto);
+        return "dogwalker/edit";
     }
 
     @Transactional
-    @PostMapping(value = { "/daycare/{id}/edit", "/daycare/create" })
+    @PostMapping(value = { "/dogwalker/{id}/edit", "/dogwalker/create" })
     @PostAuthorize("hasRole('ROLE_ADMIN') ")
-    public String save(DaycareDTO dto) {
-        return String.format("redirect:/daycare/%s", this.service.save(dto).getId());
+    public String save(DogWalkerDTO dto) {
+        return String.format("redirect:/dogwalker/%s", this.service.save(dto).getId());
     }
 
-    @PostMapping({ "/daycare/{id}/delete" })
+    @PostMapping({ "/dogwalker/{id}/delete" })
     public Object delete(@PathVariable(value = "id") Integer id, SessionStatus status) {
         try {
             this.service.delete(id);
@@ -81,11 +81,11 @@ public class DaycareController extends AbstractController<DaycareDTO>{
             status.setComplete();
             return new ModelAndView("error/errorHapus")
                     .addObject("entityId", id)
-                    .addObject("entityName", "daycare")
+                    .addObject("entityName", "dogwalker")
                     .addObject("errorCause", exception.getRootCause().getMessage())
-                    .addObject("backLink", "/daycare");
+                    .addObject("backLink", "/dogwalker");
         }
         status.setComplete();
-        return "redirect:/daycare";
+        return "redirect:/dogwalker";
     }
 }

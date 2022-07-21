@@ -1,22 +1,17 @@
 <!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
-<!DOCTYPE html>
-<html   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        layout:decorate="~{layout}"
-        xmlns:sd="http://www.w3.org/1999/xhtml"
-        lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="~{fragments/head :: head}"></head>
-
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sd="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<head>
+    <title>Users List</title>
+</head>
 <body>
-<!-- Fixed navbar -->
-<div th:replace="~{fragments/navBarIN :: navBarIndex}"> </div>
-<!-- /.navbar -->
-<header id="head" class="secondary"></header>
-
 <div layout:fragment="breadcrumb">
-    <h1>Daycare's  Management</h1>
+    <h1>Book's  Management</h1>
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Daycares</li>
+        <li class="active">Books</li>
     </ol>
 </div>
 <div layout:fragment="content">
@@ -24,8 +19,9 @@
         <div class="col-xs-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <a class="box-title btn btn-primary" th:href="@{/daycare/create}">New daycare</a>
+                    <a class="box-title btn btn-primary" th:href="@{/users/create}">New book</a>
                 </div>
+
                 <!-- /.box-header -->
                 <div class="box-body">
                     Show <span sd:page-size-selector="javascript"></span> entries
@@ -34,54 +30,60 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th>ID</th>
+                                    <th>Nombre usuario</th>
+                                    <th>Fecha último login</th>
+                                    <th>Fecha de nacimiento</th>
                                     <th>Nombre</th>
-                                    <th>Precio/Noche</th>
-                                    <th>Teléfono</th>
+                                    <th>Apellidos</th>
                                     <th>Email</th>
+                                    <th>Teléfono móvil</th>
                                     <th>Dirección</th>
-                                    <th>Valoración</th>
-                                    <th>&nbsp;</th>
+                                    <th>&nbsp</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="item,iter : ${daycare}">
+                                <tr th:each="item,iter : ${users}">
                                     <td th:text="${item.id}"></td>
+                                    <td th:text="${item.userName}"></td>
+                                    <td th:text="${item.date}"></td>
+                                    <td th:text="${item.birthDate}"></td>
                                     <td th:text="${item.name}"></td>
-                                    <td th:text="${item.nightPrice}"></td>
-                                    <td th:text="${item.phone}"></td>
+                                    <td th:text="${item.surname}"></td>
                                     <td th:text="${item.email}"></td>
-                                    <td th:text="${item.address}"></td>
-                                    <td th:text="${item.ranking}"></td>
+                                    <td th:text="${item.phone}"></td>
+                                    <td th:text="${item.addresses}"></td>
                                     <td>
-                                        <a href="#" class="btn btn-default" th:href="@{'/daycare/' + ${item.id}}"
+                                        <a href="#" class="btn btn-default" th:href="@{'/users/' + ${item.id}}"
                                            title="View"><span class="glyphicon glyphicon glyphicon-eye-open"></span></a>
-                                        <a href="#" class="btn btn-default" th:href="@{'/daycare/' + ${item.id} + '/edit'}"
+                                        <a href="#" class="btn btn-default" th:href="@{'/users/' + ${item.id} + '/edit'}"
                                            title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
                                         <button class="btn btn-danger" type="submit" value="Delete"
-                                                th:formaction="'/daycare/' + ${item.id} + '/delete'">
+                                                th:formaction="'/users/' + ${item.id} + '/delete'">
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </button>
                                         <!--                                        <a href="#" class="btn btn-default" th:href="@{'/tasks/' + ${task.id} + '/delete'}"-->
                                         <!--                                           title="Delete"><span class="glyphicon glyphicon-trash"></span></a>-->
                                     </td>
                                 </tr>
-                                <tr th:if="${#lists.isEmpty(daycare.content)}">
-                                    <td colspan="13" class="text-center">No daycares</td>
+                                <tr th:if="${#lists.isEmpty(users.content)}">
+                                    <td colspan="13" class="text-center">No books</td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
                     </form>
                 </div>
-                <div th:if="${not #lists.isEmpty(daycare.content)}">
+
+
+                <div th:if="${not #lists.isEmpty(users.content)}">
                     <div class="text-center">
                         <nav>
                             <ul class="pagination" sd:pagination="full">
-                                <div th:if="${daycare.totalPages > 0}" class="pagination"
+                                <div th:if="${users.totalPages > 0}" class="pagination"
                                      th:each="pageNumber : ${pageNumbers}">
-                                    <li th:class="${pageNumber==daycare.number + 1} ? active">
-                                        <a href="#" th:href="@{/daycare(size=${daycare.size}, page=${pageNumber})}"
+                                    <li th:class="${pageNumber==users.number + 1} ? active">
+                                        <a href="#" th:href="@{/users(size=${users.size}, page=${pageNumber})}"
                                            th:text=${pageNumber}></a>
                                     </li>
                                 </div>
@@ -89,16 +91,11 @@
                         </nav>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
 </div>
-
-<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script th:src="@{/js/headroom.min.js}"></script>
-<script th:src="@{/js/jQuery.headroom.min.js}"></script>
-<script th:src="@{/js/template.js}"></script>
 </body>
 </html>
