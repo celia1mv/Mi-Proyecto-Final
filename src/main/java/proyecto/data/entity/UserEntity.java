@@ -48,8 +48,9 @@ public class UserEntity implements Serializable {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<AddressEntity> addresses;
 
-    @OneToMany(mappedBy = "user")
-    private Set<DogEntity> dogs;
+    @ManyToOne()
+    @JoinColumn(name="dog_id")
+    private DogEntity dog;
 
     @OneToMany(mappedBy = "user")
     private Set<PaymentMethodEntity> paymentMethodes;
@@ -150,12 +151,20 @@ public class UserEntity implements Serializable {
         this.addresses = addresses;
     }
 
-    public Set<DogEntity> getDogs() {
-        return dogs;
+    public Set<DogWalkerEntity> getDogwalkers() {
+        return dogwalkers;
     }
 
-    public void setDogs(Set<DogEntity> dogs) {
-        this.dogs = dogs;
+    public void setDogwalkers(Set<DogWalkerEntity> dogwalkers) {
+        this.dogwalkers = dogwalkers;
+    }
+
+    public DogEntity getDog() {
+        return dog;
+    }
+
+    public void setDog(DogEntity dog) {
+        this.dog = dog;
     }
 
     public Set<PaymentMethodEntity> getPaymentMethodes() {

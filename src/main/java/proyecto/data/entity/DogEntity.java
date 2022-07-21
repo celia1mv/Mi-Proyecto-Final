@@ -1,15 +1,25 @@
 package proyecto.data.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "DOG")
 public class DogEntity implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private Integer age;
     private String allergies;
     private Integer compatible;
@@ -24,20 +34,14 @@ public class DogEntity implements Serializable {
     @Column(name = "weight_kg")
     private Integer weight;
 
-    //Relations
+    @OneToMany(mappedBy = "dog")
+    private Set<UserEntity> user;
 
-    @ManyToOne()
-    @JoinColumn(name = "user_id")
-    private UserEntity user;
+    public DogEntity() {  }
 
-
-    //Builder
-    public DogEntity() {
-    }
-
-    public DogEntity(Integer id, Integer age, String allergies, Integer compatible, String gender,
+    public DogEntity(Long id, Integer age, String allergies, Integer compatible, String gender,
                      String informationAdditional, Integer microchip, String name, String race, String sterilized,
-                     Integer weight, UserEntity user) {
+                     Integer weight, Set<UserEntity> user) {
         this.id = id;
         this.age = age;
         this.allergies = allergies;
@@ -52,11 +56,11 @@ public class DogEntity implements Serializable {
         this.user = user;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -140,11 +144,11 @@ public class DogEntity implements Serializable {
         this.weight = weight;
     }
 
-    public UserEntity getUser() {
+    public Set<UserEntity> getUser() {
         return user;
     }
 
-    public void setUser(UserEntity user) {
+    public void setUser(Set<UserEntity> user) {
         this.user = user;
     }
 }
