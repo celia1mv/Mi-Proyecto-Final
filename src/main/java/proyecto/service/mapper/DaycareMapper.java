@@ -16,4 +16,19 @@ import proyecto.dto.DaycareDTO;
             daycareDto.setRanking(daycareEntity.getRanking());
             return daycareDto;
         }
+
+        public DaycareEntity toEntity(DaycareDTO daycareDTO) {
+            final DaycareEntity entity = new DaycareEntity();
+            entity.setId(daycareDTO.getId());
+            entity.setName(daycareDTO.getName());
+            entity.setNightPrice(daycareDTO.getNightPrice());
+            entity.setPhone(daycareDTO.getPhone());
+            entity.setEmail(daycareDTO.getEmail());
+            entity.setName(daycareDTO.getName());
+            entity.setAddress(daycareDTO.getAddress());
+            entity.setRanking(daycareDTO.getRanking());
+            return entity;
+        }
+
+
     }
