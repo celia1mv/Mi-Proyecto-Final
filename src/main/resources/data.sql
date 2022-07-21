@@ -94,10 +94,18 @@ VALUES
   ( 4, 'dogs junios',10,'666777888','pruebaguarderia@gmail.com', 7,'alcorcon 39'),
   ( 5, 'pipi junios',5,'666777888','pruebaguarderia@gmail.com', 7,'sevilla 8');
 
+INSERT INTO dogwalker (id,name,surname,phone,email,address,availability,ranking,max_num_dogs,price_walk,sterilized)
+VALUES
+  ( 1, 'Juan','Lopez','666777888','juanlopez@gmail.com','cipreses 124','mañanas',8,4,10,1),
+  ( 2, 'Rosa','Sanchez','666777888','rosasanchez@gmail.com','malaga 90','mañanas',7.5,3,15,1),
+  ( 3, 'Fran','Nieto','666777888','frannieto@gmail.com','cinturon 66','tardes',9,4,15,1),
+  ( 4, 'Diana','Gonzalez','666777888','dianagonzalez@gmail.com','alcorcon 39','tardes',8,4,10,0),
+  ( 5, 'Pedro','Garcia','666777888','pedrogarcia@gmail.com','sevilla 8','tardes',9,5,12,0);
+
+
 UPDATE users SET dog_id = 1 WHERE id = 1 AND id = 5;
 UPDATE users SET dog_id = 2 WHERE id = 3;
 UPDATE users SET dog_id = 3 WHERE id = 6;
 UPDATE users SET dog_id = 4 WHERE id = 8;
 UPDATE users SET dog_id = 5 WHERE id = 2;
---cuando hago unresgistro primero tengo que cargar el registro anterior modificar el dto y despues cargarlo
 commit;

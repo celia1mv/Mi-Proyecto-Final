@@ -61,6 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
 
         // .logoutSuccessUrl("/login?logout").deleteCookies("JSESSIONID").invalidateHttpSession(true)
+
         // CSRF is enabled by default, with Java Config
         http.csrf().disable()
                 // Enable <frameset> in order to use H2 web console
