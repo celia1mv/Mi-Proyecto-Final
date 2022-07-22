@@ -28,16 +28,16 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" th:object="${dogwalker}" method="post">
+                <form role="form" th:object="${dogWalker}" method="post">
 
                     <div class="box-body">
 
                         <div class="form-group">
-                            <input th:type="hidden" th:field="${dogwalker.id}"/>
-                            <label for="dogwalker_name" th:text="#{Dogwalker.dogwalkername}"></label>
+                            <input th:type="hidden" th:field="${dogWalker.id}"/>
+                            <label for="dogWalker_name" th:text="#{DogWalker.dogWalkerName}"></label>
                             <input type="text"
-                                   th:field="${dogwalker.dogwalkerName}"
-                                   name="dogwalker_name" class="form-control" id="dogwalker_name" placeholder="Nombre" disabled/>
+                                   th:field="${dogWalker.dogWalkerName}"
+                                   name="dogWalker_name" class="form-control" id="dogWalker_name" placeholder="Nombre" disabled/>
                         </div>
                         <!-- /.box-body -->
                     </div>

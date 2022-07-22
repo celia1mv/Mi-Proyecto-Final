@@ -3,6 +3,7 @@ package proyecto.dto;
 
 import java.util.Set;
 
+
 public class DaycareDTO {
     private Integer id;
     private String name;
@@ -10,11 +11,8 @@ public class DaycareDTO {
     private String phone;
     private String email;
     private String address;
-    private String reservation;
     private float ranking;
-
     private Set<AddressDTO> addresses;
-
 
     public Integer getId() {
         return id;
@@ -64,19 +62,19 @@ public class DaycareDTO {
         this.address = address;
     }
 
-    public String getReservation() {
-        return reservation;
-    }
-
-    public void setReservation(String reservation) {
-        this.reservation = reservation;
-    }
-
     public float getRanking() {
         return ranking;
     }
 
     public void setRanking(float ranking) {
         this.ranking = ranking;
+    }
+
+    public Set<AddressDTO> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(Set<AddressDTO> addresses) {
+        this.addresses = addresses;
     }
 }

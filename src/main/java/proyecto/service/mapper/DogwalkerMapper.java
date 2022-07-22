@@ -11,11 +11,13 @@ public class DogwalkerMapper extends AbstractServiceMapper<DogWalker, DogWalkerD
     public DogWalker toEntity(DogWalkerDTO dogWalkerDTO) {
         final DogWalker entity = new DogWalker();
         entity.setId(dogWalkerDTO.getId());
-        entity.setName(dogWalkerDTO.getName());
-        entity.setPhone(dogWalkerDTO.getPhone());
+        entity.setAddress(dogWalkerDTO.getAddress());
         entity.setEmail(dogWalkerDTO.getEmail());
         entity.setName(dogWalkerDTO.getName());
-        entity.setAddress(dogWalkerDTO.getAddress());
+        entity.setPhone(dogWalkerDTO.getPhone());
+        entity.setRanking(dogWalkerDTO.getRanking());
+        entity.setPrice_walk(dogWalkerDTO.getPrice_walk());
+
         return entity;
     }
 
@@ -23,11 +25,12 @@ public class DogwalkerMapper extends AbstractServiceMapper<DogWalker, DogWalkerD
     public DogWalkerDTO toDto(DogWalker dogwalker) {
         final DogWalkerDTO dto = new DogWalkerDTO();
         dto.setId(dogwalker.getId());
-        dto.setName(dogwalker.getName());
-        dto.setPhone(dogwalker.getPhone());
+        dto.setAddress(dogwalker.getAddress());
         dto.setEmail(dogwalker.getEmail());
         dto.setName(dogwalker.getName());
-        dto.setAddress(dogwalker.getAddress());
+        dto.setPhone(dogwalker.getPhone());
+        dto.setRanking(dogwalker.getRanking());
+        dto.setPrice_walk(dogwalker.getPrice_walk());
         return dto;
     }
 }

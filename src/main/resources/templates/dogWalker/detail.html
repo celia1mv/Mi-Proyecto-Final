@@ -12,17 +12,17 @@
 <!-- /.navbar -->
 <header id="head" class="secondary"></header>
 
-<div layout:fragment="breadcrumb" th:object="${dogwalker}">
+<div layout:fragment="breadcrumb" th:object="${dogWalker}">
     <h1>Tasks Management</h1>
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="/dogwalker"><i class="fa fa-tasks"></i> Dogwalker</a></li>
-        <li class="active" th:utext="@{'Dogwalker ID: <b>' + ${dogwalker.id}} + '</b>'"></li>
+        <li><a href="/dogWalker"><i class="fa fa-tasks"></i> Dogwalker</a></li>
+        <li class="active" th:utext="@{'DogWalker ID: <b>' + ${dogWalker.id}} + '</b>'"></li>
     </ol>
 </div>
 
 <div layout:fragment="content">
-    <form role="form" th:object="${dogwalker}" method="post" action="#" th:action="@{'/dogwalker/' + ${dogwalker.id} + '/delete'}">
+    <form role="form" th:object="${dogWalker}" method="post" action="#" th:action="@{'/dogWalker/' + ${dogWalker.id} + '/delete'}">
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">
@@ -31,7 +31,7 @@
                             <div class="tab-pane active" id="1a">
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
-                                        <label for="name" th:text="#{Dogwalker.Name}"></label>
+                                        <label for="name" th:text="#{DogWalker.Name}"></label>
                                         <p id="name" th:text="${dogwalker.dogwalkerName}"/>
                                     </div>
                                 </div>
@@ -40,11 +40,11 @@
                     </div>
                 </div>
                 <div class="box-footer with-border">
-                    <a th:href="@{/dogwalker}" class="btn btn-default" role="button"
+                    <a th:href="@{/dogWalker}" class="btn btn-default" role="button"
                        title="Back list" th:text="#{General.Back}">
                         <span aria-hidden="true"></span>
                     </a>
-                    <a th:href="@{'/dogwalker/' + ${dogwalker.id} + '/edit'}" class="btn btn-primary" role="button"
+                    <a th:href="@{'/dogWalker/' + ${dogWalker.id} + '/edit'}" class="btn btn-primary" role="button"
                        title="Back list" th:text="#{General.Edit}">
                         <span aria-hidden="true"></span>
                     </a>

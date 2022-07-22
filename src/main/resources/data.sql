@@ -1,3 +1,16 @@
+delete from `menu_role`;
+delete from `user_role`;
+delete from `menu`;
+delete from `role`;
+delete from `daycare_addresses`;
+delete from `daycare`;
+delete from `dogWalker`;
+delete from `users`;
+delete from `dog`;
+delete from `address`;
+delete from `catalogue`;
+delete from `invoice`;
+
 INSERT INTO users (id, active, birth_date, date_initial, email, surname, name, password, phone, user_name)
 VALUES (1,1,'2022-05-08','2022-05-08','admin@gmail.com','admin','admin','$2a$04$UWl44lyROes50n/qHGQKbu.3JwDMXkZZSaL1Tz5V7IF4EORU6p2fG','956783542','admin'),
        (2,1,'2022-05-08','2022-05-08','emingora@gmail.com','emingora','emingora','$2a$04$UWl44lyROes50n/qHGQKbu.3JwDMXkZZSaL1Tz5V7IF4EORU6p2fG','956783541','emingora'),
@@ -94,7 +107,7 @@ VALUES
   ( 4, 'dogs junios',10,'666777888','pruebaguarderia@gmail.com', 7,'alcorcon 39'),
   ( 5, 'pipi junios',5,'666777888','pruebaguarderia@gmail.com', 7,'sevilla 8');
 
-INSERT INTO dogwalker (id,name,surname,phone,email,address,availability,ranking,max_num_dogs,price_walk,sterilized)
+INSERT INTO dogWalker (id,name,surname,phone,email,address,availability,ranking,max_num_dogs,price_walk,sterilized)
 VALUES
   ( 1, 'Juan','Lopez','666777888','juanlopez@gmail.com','cipreses 124','mañanas',8,4,10,1),
   ( 2, 'Rosa','Sanchez','666777888','rosasanchez@gmail.com','malaga 90','mañanas',7.5,3,15,1),

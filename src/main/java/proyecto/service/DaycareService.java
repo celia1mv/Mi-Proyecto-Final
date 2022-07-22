@@ -10,7 +10,6 @@ import proyecto.dto.DaycareDTO;
 import proyecto.service.mapper.DaycareMapper;
 
 @Service
-
 public class DaycareService extends AbstractBusinessService<Daycare, Integer, DaycareDTO, DaycareRepository, DaycareMapper> {
 
     private final UserRepository userRepository;

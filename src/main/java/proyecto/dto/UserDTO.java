@@ -4,7 +4,6 @@ import proyecto.data.entity.Address;
 
 import java.util.Date;
 import java.util.Set;
-
 public class UserDTO {
     private Integer id;
     private String userName;

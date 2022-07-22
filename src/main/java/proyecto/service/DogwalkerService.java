@@ -9,7 +9,6 @@ import proyecto.data.repository.UserRepository;
 import proyecto.dto.DogWalkerDTO;
 import proyecto.service.mapper.DogwalkerMapper;
 
-
 @Service
 public class DogwalkerService extends AbstractBusinessService<DogWalker, Integer, DogWalkerDTO, DogWalkerRepository, DogwalkerMapper> {
 
@@ -19,12 +18,12 @@ public class DogwalkerService extends AbstractBusinessService<DogWalker, Integer
         super(repository, serviceMapper);
         this.userRepository = userRepository;
     }
-    //Obtener el listado del las guarderías para perros
+    //Obtener el listado del las paseadores para perros
     public Page<DogWalkerDTO> findAll(Pageable pageable) {
         return getRepository().findAll(pageable).map(getServiceMapper()::toDto);
     }
 
-    //Modificar una guardería para perros
+    //Modificar una paseador para perros
     @Override
     public DogWalkerDTO save(DogWalkerDTO dto) {
         final DogWalker entity = getServiceMapper().toEntity(dto);

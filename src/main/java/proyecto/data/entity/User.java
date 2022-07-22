@@ -42,7 +42,7 @@ public class User implements Serializable {
 
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private Set<DogWalker> dogwalkers;
+    private Set<DogWalker> dogWalker;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Address> addresses;
@@ -150,12 +150,12 @@ public class User implements Serializable {
         this.addresses = addresses;
     }
 
-    public Set<DogWalker> getDogwalkers() {
-        return dogwalkers;
+    public Set<DogWalker> getDogWalker() {
+        return dogWalker;
     }
 
-    public void setDogwalkers(Set<DogWalker> dogwalkers) {
-        this.dogwalkers = dogwalkers;
+    public void setDogWalker(Set<DogWalker> dogWalker) {
+        this.dogWalker = dogWalker;
     }
 
     public Dog getDog() {

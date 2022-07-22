@@ -30,7 +30,7 @@ public class DogwalkerController extends AbstractController<DogWalkerDTO>{
         super(menuService);
         this.service = servicio;
     }
-    @GetMapping("/dogwalker")
+    @GetMapping("/dogWalker")
     @PreAuthorize("hasAuthority('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public String getAll(@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size,
                          Model model) {
@@ -39,41 +39,41 @@ public class DogwalkerController extends AbstractController<DogWalkerDTO>{
                 size.orElse(10)));
         model
                 //.addAttribute("username", user.getUserName())
-                .addAttribute("dogwalker", all)
+                .addAttribute("dogWalker", all)
                 .addAttribute(pageNumbersAttributeKey, getPageNumbers(all));
-        return "dogwalker/list";
+        return "dogWalker/list";
     }
 
-    @GetMapping("/dogwalker/{id}")
+    @GetMapping("/dogWalker/{id}")
     @PostAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     public String detail(@PathVariable("id") Integer id, ModelMap model) {
-        model.addAttribute("dogwalker", this.service.findById(id).get());
-        return "dogwalker/detail";
+        model.addAttribute("dogWalker", this.service.findById(id).get());
+        return "dogWalker/detail";
     }
 
-    @GetMapping("/dogwalker/{id}/edit")
+    @GetMapping("/dogWalker/{id}/edit")
     @PostAuthorize("hasRole('ROLE_ADMIN') ")
     public String edit(@PathVariable("id") Integer id, ModelMap model) {
-        model.addAttribute("dogwalker", this.service.findById(id).get());
-        return "dogwalker/edit";
+        model.addAttribute("dogWalker", this.service.findById(id).get());
+        return "dogWalker/edit";
     }
 
-    @GetMapping("/dogwalker/create")
+    @GetMapping("/dogWalker/create")
     @PostAuthorize("hasRole('ROLE_ADMIN') ")
     public String create(ModelMap model) {
         final DaycareDTO dto = new DaycareDTO();
-        model.addAttribute("dogwalker", dto);
-        return "dogwalker/edit";
+        model.addAttribute("dogWalker", dto);
+        return "dogWalker/edit";
     }
 
     @Transactional
-    @PostMapping(value = { "/dogwalker/{id}/edit", "/dogwalker/create" })
+    @PostMapping(value = { "/dogWalker/{id}/edit", "/dogWalker/create" })
     @PostAuthorize("hasRole('ROLE_ADMIN') ")
     public String save(DogWalkerDTO dto) {
-        return String.format("redirect:/dogwalker/%s", this.service.save(dto).getId());
+        return String.format("redirect:/dogWalker/%s", this.service.save(dto).getId());
     }
 
-    @PostMapping({ "/dogwalker/{id}/delete" })
+    @PostMapping({ "/dogWalker/{id}/delete" })
     public Object delete(@PathVariable(value = "id") Integer id, SessionStatus status) {
         try {
             this.service.delete(id);
@@ -81,11 +81,11 @@ public class DogwalkerController extends AbstractController<DogWalkerDTO>{
             status.setComplete();
             return new ModelAndView("error/errorHapus")
                     .addObject("entityId", id)
-                    .addObject("entityName", "dogwalker")
+                    .addObject("entityName", "dogWalker")
                     .addObject("errorCause", exception.getRootCause().getMessage())
-                    .addObject("backLink", "/dogwalker");
+                    .addObject("backLink", "/dogWalker");
         }
         status.setComplete();
-        return "redirect:/dogwalker";
+        return "redirect:/dogWalker";
     }
 }

@@ -21,7 +21,7 @@ public class Catalogue implements Serializable {
     private Daycare daycares;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private DogWalker dogWalkers;
+    private DogWalker dogWalker;
 
 
     //Constructores
@@ -30,11 +30,11 @@ public class Catalogue implements Serializable {
     public Catalogue() {
     }
 
-    public Catalogue(Integer id, String serviceType, Daycare daycares, DogWalker dogWalkers) {
+    public Catalogue(Integer id, String serviceType, Daycare daycares, DogWalker dogWalker) {
         this.id = id;
         this.serviceType = serviceType;
         this.daycares = daycares;
-        this.dogWalkers = dogWalkers;
+        this.dogWalker = dogWalker;
     }
     //Getter y Setter
 
@@ -63,11 +63,11 @@ public class Catalogue implements Serializable {
         this.daycares = daycares;
     }
 
-    public DogWalker getDogWalkers() {
-        return dogWalkers;
+    public DogWalker getDogWalker() {
+        return dogWalker;
     }
 
-    public void setDogWalkers(DogWalker dogWalkers) {
-        this.dogWalkers = dogWalkers;
+    public void setDogWalker(DogWalker dogWalker) {
+        this.dogWalker = dogWalker;
     }
 }

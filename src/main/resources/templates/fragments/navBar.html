@@ -45,18 +45,20 @@
 					<a class="dropdown-toggle" data-toggle="dropdown">Servicios <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a th:href="@{/daycare}">Residencias</a></li>
-						<li><a th:href="@{/dogwalker}">Paseadores</a></li>
+						<li><a th:href="@{/dogWalker}">Paseadores</a></li>
 					</ul>
 				</li>
 
-				<li sec:authorize="isAuthenticated()">
-					<!--a class="btn" th:href="@{/index}">Cerrar sesión</a-->
-					<a class="btn">
-						<form th:action="@{/logout}" method="post">
-							<input type="submit"/>
-						</form>Cerrar sesión</a>
+				<li sec:authorize="hasRole('ROLE_ADMIN')">
+					<a th:href="@{/users}">Usuarios</a>
 				</li>
-				<li class="active"><a th:href="@{/users}">Usuarios</a></li>
+
+				<li sec:authorize="isAuthenticated()">
+					<form th:action="@{/logout}" method="post">
+						<button class="btn" type="submit">Cerrar sesión</button>
+					</form>
+				</li>
+
 				<li sec:authorize="!isAuthenticated()"><a class="btn" th:href="@{/login}">Iniciar sesión / Registrarse</a></li>
 
 
@@ -82,7 +84,7 @@
 					<a class="dropdown-toggle" data-toggle="dropdown">Servicios <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a th:href="@{/daycare}">Residencias</a></li>
-						<li><a th:href="@{/dogwalker}">Paseadores</a></li>
+						<li><a th:href="@{/dogWalker}">Paseadores</a></li>
 					</ul>
 				</li>
 			</ul>

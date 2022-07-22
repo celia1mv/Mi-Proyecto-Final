@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "dogwalker")
+@Table(name = "dogWalker")
 public class DogWalker implements Serializable {
     //Attributes
     @Id
@@ -36,13 +36,13 @@ public class DogWalker implements Serializable {
     private String profile_picture;
     private String gallery;
     //Relations
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "dogwalkers")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "dogWalker")
     private Set<User> users;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Address> addresses;
 
-    @OneToMany(mappedBy = "dogWalkers")
+    @OneToMany(mappedBy = "dogWalker")
     private Set<Catalogue> catalogue;
 
     // Constructor
