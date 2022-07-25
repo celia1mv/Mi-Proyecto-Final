@@ -16,7 +16,6 @@ import java.util.Set;
 
         @Column(name = "night_price", nullable = false)
         private float nightPrice;
-
         @Column(nullable = false, length = 15)
         private String phone;
         @Column(nullable = false, length = 150)

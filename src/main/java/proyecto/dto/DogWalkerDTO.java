@@ -1,21 +1,25 @@
 package proyecto.dto;
 
-import javax.persistence.Column;
 import java.util.Date;
 import java.util.Set;
 
 public class DogWalkerDTO {
     private Integer id;
+    private String doc_identification;
     private String name;
+    private String userName;
     private String surname;
     private String email;
+    private String password;
     private String phone;
+    private Date birthdate;
     private String availability;
     private String address;
     private Integer max_num_dogs;
-    private boolean sterilized;
+    private String weight_dogs;
+    private String sterilized;
     private String reviews;
-    private float ranking;
+    private float assessment;
     private float price_walk;
     private String profile_picture;
     private String gallery;
@@ -29,12 +33,28 @@ public class DogWalkerDTO {
         this.id = id;
     }
 
+    public String getDoc_identification() {
+        return doc_identification;
+    }
+
+    public void setDoc_identification(String doc_identification) {
+        this.doc_identification = doc_identification;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getSurname() {
@@ -53,12 +73,28 @@ public class DogWalkerDTO {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Date getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getAvailability() {
@@ -85,11 +121,19 @@ public class DogWalkerDTO {
         this.max_num_dogs = max_num_dogs;
     }
 
-    public boolean isSterilized() {
+    public String getWeight_dogs() {
+        return weight_dogs;
+    }
+
+    public void setWeight_dogs(String weight_dogs) {
+        this.weight_dogs = weight_dogs;
+    }
+
+    public String getSterilized() {
         return sterilized;
     }
 
-    public void setSterilized(boolean sterilized) {
+    public void setSterilized(String sterilized) {
         this.sterilized = sterilized;
     }
 
@@ -101,13 +145,14 @@ public class DogWalkerDTO {
         this.reviews = reviews;
     }
 
-    public float getRanking() {
-        return ranking;
+    public float getAssessment() {
+        return assessment;
     }
 
-    public void setRanking(float ranking) {
-        this.ranking = ranking;
+    public void setAssessment(float assessment) {
+        this.assessment = assessment;
     }
+
 
     public float getPrice_walk() {
         return price_walk;
@@ -140,4 +185,6 @@ public class DogWalkerDTO {
     public void setAddresses(Set<AddressDTO> addresses) {
         this.addresses = addresses;
     }
+
+
 }

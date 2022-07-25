@@ -9,6 +9,8 @@ import proyecto.data.entity.User;
 public interface UserRepository extends JpaRepository<User, Integer> {
 
     User findByUserNameAndActiveTrue(String username);
+    User findByUserName(String username);
+
 
     Page<User> findAll(Pageable pageable);
 

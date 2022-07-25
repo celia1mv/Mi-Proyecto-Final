@@ -12,30 +12,27 @@
 <!-- /.navbar -->
 <header id="head" class="secondary"></header>
 
-<div layout:fragment="breadcrumb" th:object="${dogWalker}">
-    <h1>DogWalker Management</h1>
+<div layout:fragment="breadcrumb" th:object="${daycare}">
+    <h1>Tasks Management</h1>
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="/dogWalker"><i class="fa fa-tasks"></i> DogWalker</a></li>
-        <li class="active" th:utext="@{'DogWalker ID: <b>' + ${dogWalker.id}} + '</b>'"></li>
+        <li><a href="/daycare"><i class="fa fa-tasks"></i> Daycares</a></li>
+        <li class="active" th:utext="@{'Daycare ID: <b>' + ${daycare.id}} + '</b>'"></li>
     </ol>
 </div>
+
 <div layout:fragment="content">
-    <div class="row">
-        <div class="col-md-12">
-            <form role="form" th:object="${dogWalker}" method="post">
+    <form role="form" th:object="${daycare}" method="post" action="#" th:action="@{'/daycare/' + ${daycare.id} + '/delete'}">
+        <div class="row">
+            <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-body">
                         <div class="tab-content">
-                            <input th:type="hidden" th:field="${dogWalker.id}"/>
                             <div class="tab-pane active" id="1a">
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
-                                        <label for="name" th:text="#{dogWalker.Name}"></label>
-                                        <input type="text" class="form-control"
-                                               id="name"
-                                               th:field="${dogWalker.Name}"
-                                               maxlength="255">
+                                        <label for="name" th:text="#{Daycare.Name}"></label>
+                                        <p id="name" th:text="${daycare.daycareName}"/>
                                     </div>
                                 </div>
                             </div>
@@ -43,17 +40,21 @@
                     </div>
                 </div>
                 <div class="box-footer with-border">
-                    <a th:href="@{/dogWalker}" class="btn btn-default" role="button"
-                       title="Back list" th:text="#{General.Cancel}">
+                    <a th:href="@{/daycare}" class="btn btn-default" role="button"
+                       title="Back list" th:text="#{General.Back}">
                         <span aria-hidden="true"></span>
                     </a>
-                    <button type="submit" class="box-title btn btn-primary"
-                            title="Save Data" th:text="#{General.Save}">
+                    <a th:href="@{'/daycare/' + ${daycare.id} + '/edit'}" class="btn btn-primary" role="button"
+                       title="Back list" th:text="#{General.Edit}">
+                        <span aria-hidden="true"></span>
+                    </a>
+                    <button type="submit" class="box-title btn btn-danger"
+                            title="Save Data" th:text="#{General.Delete}">
                     </button>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
 
 

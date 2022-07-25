@@ -10,65 +10,85 @@
 <nav th:replace="~{fragments/navBar :: navBarIndexIn}"> </nav>
 <!-- /.navbar -->
 
-<h1>Gestión de usuarios</h1>
-<a th:href="@{/users/create}">Nuevo usuario</a>
-Show <span sd:page-size-selector="javascript"></span> entries
+<h1>Gestión de residencias caninas</h1>
+<a th:href="@{/dogwalker/create}">Nueva paseador</a>
+Mostrar <span sd:page-size-selector="javascript"></span> entradas
 <form action="#" th:action="@{'/'}" method="post">
     <table>
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Nombre usuario</th>
-            <th>Fecha último login</th>
-            <th>Fecha de nacimiento</th>
+            <th>Id</th>
+            <th>Doc. Identificación</th>
             <th>Nombre</th>
+            <th>Nombre de usuario</th>
             <th>Apellidos</th>
             <th>Email</th>
-            <th>Teléfono móvil</th>
+            <th>Clave</th>
+            <th>Teléfono</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Disponibilidad</th>
             <th>Dirección</th>
-            <th>&nbsp</th>
+            <th>Máximo número de perros</th>
+            <th>Peso de perros</th>
+            <th>Esterilizado</th>
+            <th>Críticas</th>
+            <th>Valoración</th>
+            <th>Precio del paseo</th>
+            <th>Foto de perfil</th>
+            <th>Galería</th>
+            <th>&nbsp;</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="item,iter : ${users}">
+        <tr th:each="item,iter : ${dogwalker}">
             <td th:text="${item.id}"></td>
-            <td th:text="${item.userName}"></td>
-            <td th:text="${item.date}"></td>
-            <td th:text="${item.birthDate}"></td>
+            <td th:text="${item.doc_identification}"></td>
             <td th:text="${item.name}"></td>
+            <td th:text="${item.userName}"></td>
             <td th:text="${item.surname}"></td>
             <td th:text="${item.email}"></td>
+            <td th:text="${item.password}"></td>
             <td th:text="${item.phone}"></td>
-            <td th:text="${item.addresses}"></td>
+            <td th:text="${item.birthdate}"></td>
+            <td th:text="${item.availability}"></td>
+            <td th:text="${item.address}"></td>
+            <td th:text="${item.max_num_dogs}"></td>
+            <td th:text="${item.weight_dogs}"></td>
+            <td th:text="${item.sterilized}"></td>
+            <td th:text="${item.reviews}"></td>
+            <td th:text="${item.assessment}"></td>
+            <td th:text="${item.price_walk}"></td>
+            <td th:text="${item.profile_picture}"></td>
+            <td th:text="${item.gallery}"></td>
             <td>
-                <a href="#" class="btn btn-default" th:href="@{'/users/' + ${item.id}}"
+                <a href="#" class="btn btn-default" th:href="@{'/dogwalker/' + ${item.id}}"
                    title="View"><span class="glyphicon glyphicon glyphicon-eye-open"></span></a>
-                <a href="#" class="btn btn-default" th:href="@{'/users/' + ${item.id} + '/edit'}"
+                <a href="#" class="btn btn-default" th:href="@{'/dogwalker/' + ${item.id} + '/edit'}"
                    title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
                 <button class="btn btn-danger" type="submit" value="Delete"
-                        th:formaction="'/users/' + ${item.id} + '/delete'">
+                        th:formaction="'/dogwalker/' + ${item.id} + '/delete'">
                     <span class="glyphicon glyphicon-trash"></span>
                 </button>
                 <!-- <a href="#" class="btn btn-default" th:href="@{'/tasks/' + ${task.id} + '/delete'}" -->
                 <!-- title="Delete"><span class="glyphicon glyphicon-trash"></span></a> -->
             </td>
         </tr>
-        <tr th:if="${#lists.isEmpty(users.content)}">
-            <td colspan="13" class="text-center">No users</td>
+        <tr th:if="${#lists.isEmpty(dogwalker.content)}">
+            <td colspan="13" class="text-center">No dogwalkers</td>
         </tr>
         </tbody>
     </table>
     </div>
 </form>
 </div>
-<div th:if="${not #lists.isEmpty(users.content)}">
+<div th:if="${not #lists.isEmpty(dogwalker.content)}">
     <div class="text-center">
         <nav>
             <ul class="pagination" sd:pagination="full">
-                <div th:if="${users.totalPages > 0}" class="pagination"
+                <div th:if="${dogwalker.totalPages > 0}" class="pagination"
                      th:each="pageNumber : ${pageNumbers}">
-                    <li th:class="${pageNumber==users.number + 1} ? active">
-                        <a href="#" th:href="@{/users(size=${users.size}, page=${pageNumber})}"
+                    <li th:class="${pageNumber==dogwalker.number + 1} ? active">
+                        <a href="#" th:href="@{/dogwalker(size=${dogwalker.size}, page=${pageNumber})}"
                            th:text=${pageNumber}></a>
                     </li>
                 </div>
@@ -92,4 +112,3 @@ Show <span sd:page-size-selector="javascript"></span> entries
 
 </body>
 </html>
-

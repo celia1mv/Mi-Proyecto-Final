@@ -14,23 +14,22 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import proyecto.dto.DaycareDTO;
 import proyecto.dto.DogWalkerDTO;
-import proyecto.service.DaycareService;
-import proyecto.service.DogwalkerService;
+import proyecto.service.DogWalkerService;
 import proyecto.service.MenuService;
 
 import java.util.Optional;
 
 
 @Controller
-public class DogwalkerController extends AbstractController<DogWalkerDTO>{
+public class DogWalkerController extends AbstractController<DogWalkerDTO>{
 
-    private final DogwalkerService service;
+    private final DogWalkerService service;
     @Autowired
-    protected DogwalkerController(MenuService menuService, DogwalkerService servicio) {
+    protected DogWalkerController(MenuService menuService, DogWalkerService servicio) {
         super(menuService);
         this.service = servicio;
     }
-    @GetMapping("/dogWalker")
+    @GetMapping("/dogwalker")
     @PreAuthorize("hasAuthority('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public String getAll(@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size,
                          Model model) {
@@ -39,41 +38,41 @@ public class DogwalkerController extends AbstractController<DogWalkerDTO>{
                 size.orElse(10)));
         model
                 //.addAttribute("username", user.getUserName())
-                .addAttribute("dogWalker", all)
+                .addAttribute("dogwalker", all)
                 .addAttribute(pageNumbersAttributeKey, getPageNumbers(all));
-        return "dogWalker/list";
+        return "dogwalker/list";
     }
 
-    @GetMapping("/dogWalker/{id}")
+    @GetMapping("/dogwalker/{id}")
     @PostAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     public String detail(@PathVariable("id") Integer id, ModelMap model) {
-        model.addAttribute("dogWalker", this.service.findById(id).get());
-        return "dogWalker/detail";
+        model.addAttribute("dogwalker", this.service.findById(id).get());
+        return "dogwalker/detail";
     }
 
-    @GetMapping("/dogWalker/{id}/edit")
+    @GetMapping("/dogwalker/{id}/edit")
     @PostAuthorize("hasRole('ROLE_ADMIN') ")
     public String edit(@PathVariable("id") Integer id, ModelMap model) {
-        model.addAttribute("dogWalker", this.service.findById(id).get());
-        return "dogWalker/edit";
+        model.addAttribute("dogwalker", this.service.findById(id).get());
+        return "dogwalker/edit";
     }
 
-    @GetMapping("/dogWalker/create")
+    @GetMapping("/dogwalker/create")
     @PostAuthorize("hasRole('ROLE_ADMIN') ")
     public String create(ModelMap model) {
         final DaycareDTO dto = new DaycareDTO();
-        model.addAttribute("dogWalker", dto);
-        return "dogWalker/edit";
+        model.addAttribute("dogwalker", dto);
+        return "dogwalker/edit";
     }
 
     @Transactional
-    @PostMapping(value = { "/dogWalker/{id}/edit", "/dogWalker/create" })
+    @PostMapping(value = { "/dogwalker/{id}/edit", "/dogwalker/create" })
     @PostAuthorize("hasRole('ROLE_ADMIN') ")
     public String save(DogWalkerDTO dto) {
-        return String.format("redirect:/dogWalker/%s", this.service.save(dto).getId());
+        return String.format("redirect:/dogwalker/%s", this.service.save(dto).getId());
     }
 
-    @PostMapping({ "/dogWalker/{id}/delete" })
+    @PostMapping({ "/dogwalker/{id}/delete" })
     public Object delete(@PathVariable(value = "id") Integer id, SessionStatus status) {
         try {
             this.service.delete(id);
@@ -81,11 +80,11 @@ public class DogwalkerController extends AbstractController<DogWalkerDTO>{
             status.setComplete();
             return new ModelAndView("error/errorHapus")
                     .addObject("entityId", id)
-                    .addObject("entityName", "dogWalker")
+                    .addObject("entityName", "dogwalker")
                     .addObject("errorCause", exception.getRootCause().getMessage())
-                    .addObject("backLink", "/dogWalker");
+                    .addObject("backLink", "/dogwalker");
         }
         status.setComplete();
-        return "redirect:/dogWalker";
+        return "redirect:/dogwalker";
     }
 }

@@ -1,98 +1,81 @@
 <!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
 <!DOCTYPE html>
-<html   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        layout:decorate="~{layout}"
-        xmlns:sd="http://www.w3.org/1999/xhtml"
-        lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html   xmlns:sd="http://www.w3.org/1999/xhtml"
+        lang="en" xmlns="https://www.thymeleaf.org"
+        xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="~{fragments/head :: head}"></head>
 
 <body>
 <!-- Fixed navbar -->
-<div th:replace="~{fragments/navBarIN :: navBarIndex}"> </div>
+<nav th:replace="~{fragments/navBar :: navBarIndexIn}"> </nav>
 <!-- /.navbar -->
-<header id="head" class="secondary"></header>
 
-<div layout:fragment="breadcrumb">
-    <h1>Daycare's  Management</h1>
-    <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Daycares</li>
-    </ol>
+<h1>Gestión de residencias caninas</h1>
+<a th:href="@{/daycare/create}">Nueva residencia</a>
+Mostrar <span sd:page-size-selector="javascript"></span> entradas
+<form action="#" th:action="@{'/'}" method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Precio/Noche</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+            <th>Dirección</th>
+            <th>Valoración</th>
+            <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item,iter : ${daycare}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.nightPrice}"></td>
+            <td th:text="${item.phone}"></td>
+            <td th:text="${item.email}"></td>
+            <td th:text="${item.address}"></td>
+            <td th:text="${item.ranking}"></td>
+            <td>
+                <a href="#" class="btn btn-default" th:href="@{'/daycare/' + ${item.id}}"
+                   title="View">Ver</a>
+                <a href="#" class="btn btn-default" th:href="@{'/daycare/' + ${item.id} + '/edit'}"
+                   title="Edit">Modificar</a>
+                <button class="btn btn-danger" type="submit" value="Delete"
+                        th:formaction="'/daycare/' + ${item.id} + '/delete'">Borrar</button>
+                <!-- <a href="#" class="btn btn-default" th:href="@{'/tasks/' + ${task.id} + '/delete'}" -->
+                <!-- title="Delete"><span class="glyphicon glyphicon-trash"></span></a> -->
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(daycare.content)}">
+            <td colspan="13" class="text-center">No daycares</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</form>
 </div>
-<div layout:fragment="content">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <a class="box-title btn btn-primary" th:href="@{/daycare/create}">New daycare</a>
+<div th:if="${not #lists.isEmpty(daycare.content)}">
+    <div class="text-center">
+        <nav>
+            <ul class="pagination" sd:pagination="full">
+                <div th:if="${daycare.totalPages > 0}" class="pagination"
+                     th:each="pageNumber : ${pageNumbers}">
+                    <li th:class="${pageNumber==daycare.number + 1} ? active">
+                        <a href="#" th:href="@{/daycare(size=${daycare.size}, page=${pageNumber})}"
+                           th:text=${pageNumber}></a>
+                    </li>
                 </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    Show <span sd:page-size-selector="javascript"></span> entries
-                    <form action="#" class="form" th:action="@{'/'}" method="post">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Nombre</th>
-                                    <th>Precio/Noche</th>
-                                    <th>Teléfono</th>
-                                    <th>Email</th>
-                                    <th>Dirección</th>
-                                    <th>Valoración</th>
-                                    <th>&nbsp;</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr th:each="item,iter : ${daycare}">
-                                    <td th:text="${item.id}"></td>
-                                    <td th:text="${item.name}"></td>
-                                    <td th:text="${item.nightPrice}"></td>
-                                    <td th:text="${item.phone}"></td>
-                                    <td th:text="${item.email}"></td>
-                                    <td th:text="${item.address}"></td>
-                                    <td th:text="${item.ranking}"></td>
-                                    <td>
-                                        <a href="#" class="btn btn-default" th:href="@{'/daycare/' + ${item.id}}"
-                                           title="View"><span class="glyphicon glyphicon glyphicon-eye-open"></span></a>
-                                        <a href="#" class="btn btn-default" th:href="@{'/daycare/' + ${item.id} + '/edit'}"
-                                           title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <button class="btn btn-danger" type="submit" value="Delete"
-                                                th:formaction="'/daycare/' + ${item.id} + '/delete'">
-                                            <span class="glyphicon glyphicon-trash"></span>
-                                        </button>
-                                        <!--                                        <a href="#" class="btn btn-default" th:href="@{'/tasks/' + ${task.id} + '/delete'}"-->
-                                        <!--                                           title="Delete"><span class="glyphicon glyphicon-trash"></span></a>-->
-                                    </td>
-                                </tr>
-                                <tr th:if="${#lists.isEmpty(daycare.content)}">
-                                    <td colspan="13" class="text-center">No daycares</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </form>
-                </div>
-                <div th:if="${not #lists.isEmpty(daycare.content)}">
-                    <div class="text-center">
-                        <nav>
-                            <ul class="pagination" sd:pagination="full">
-                                <div th:if="${daycare.totalPages > 0}" class="pagination"
-                                     th:each="pageNumber : ${pageNumbers}">
-                                    <li th:class="${pageNumber==daycare.number + 1} ? active">
-                                        <a href="#" th:href="@{/daycare(size=${daycare.size}, page=${pageNumber})}"
-                                           th:text=${pageNumber}></a>
-                                    </li>
-                                </div>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </ul>
+        </nav>
     </div>
 </div>
+
+<!-- footer -->
+<footer th:replace="~{fragments/footer :: nuestroFooter}"></footer>
+<!-- /footer -->
+
+
 
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -100,5 +83,6 @@
 <script th:src="@{/js/headroom.min.js}"></script>
 <script th:src="@{/js/jQuery.headroom.min.js}"></script>
 <script th:src="@{/js/template.js}"></script>
+
 </body>
 </html>

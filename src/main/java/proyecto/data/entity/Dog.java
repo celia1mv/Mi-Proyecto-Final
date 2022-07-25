@@ -11,45 +11,47 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "DOG")
+@Table(name = "dog")
 public class Dog implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer age;
-    private String allergies;
-    private Integer compatible;
-    @Column(nullable = false)
-    private String gender;
-    @Column(name = "inf_additional")
-    private String informationAdditional;
-    private Integer microchip;
     private String name;
-    private String race;
-    private String sterilized;
     @Column(name = "weight_kg")
     private Integer weight;
+    private Integer age;
+    @Column(nullable = false)
+    private String gender;
+    private Integer microchip;
+    private String race;
+    private String sterilized;
+    private String allergies;
+    private boolean compatible; // Este atributo identifica si el perro puede pasear con otros perros (true) o si tiene que pasear solo (false)
+    @Column(name = "inf_additional")
+    private String informationAdditional;
+
+
 
     @OneToMany(mappedBy = "dog")
     private Set<User> user;
 
     public Dog() {  }
 
-    public Dog(Long id, Integer age, String allergies, Integer compatible, String gender,
-               String informationAdditional, Integer microchip, String name, String race, String sterilized,
-               Integer weight, Set<User> user) {
+    public Dog(Long id, String name, Integer weight, Integer age, String gender, Integer microchip,
+               String race, String sterilized, String allergies, boolean compatible,
+               String informationAdditional, Set<User> user) {
         this.id = id;
-        this.age = age;
-        this.allergies = allergies;
-        this.compatible = compatible;
-        this.gender = gender;
-        this.informationAdditional = informationAdditional;
-        this.microchip = microchip;
         this.name = name;
+        this.weight = weight;
+        this.age = age;
+        this.gender = gender;
+        this.microchip = microchip;
         this.race = race;
         this.sterilized = sterilized;
-        this.weight = weight;
+        this.allergies = allergies;
+        this.compatible = compatible;
+        this.informationAdditional = informationAdditional;
         this.user = user;
     }
 
@@ -77,11 +79,11 @@ public class Dog implements Serializable {
         this.allergies = allergies;
     }
 
-    public Integer getCompatible() {
+    public boolean isCompatible() {
         return compatible;
     }
 
-    public void setCompatible(Integer compatible) {
+    public void setCompatible(boolean compatible) {
         this.compatible = compatible;
     }
 
